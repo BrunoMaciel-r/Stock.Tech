@@ -3,12 +3,16 @@
 Informações básicas do projeto.
 
 * **Projeto:** [NOME DO PROJETO]
-* **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+* **Repositório GitHub:** [https://github.com/ICEI-PUC-Minas-PBR-ADS/pbr-ads-2026-1-p1-tiaw-t1-722102-gestao-de-estoque.git]
 * **Membros da equipe:**
 
-  * [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  * [Andrew Kaique Ferreira de Paula](https://github.com/4K4i-dev)
+  * [Bruno Maciel Lima Silva](https://github.com/BrunoMaciel-r)
+  * [Paulo Haniel Macedo de Castro](https://github.com/paulo-h30)
+  * [Pedro Henrique Faria Godinho](x)
+  * [Sophia Emanuelle de Morais dos Santos](https://github.com/sophiamsantos)
+  * [Thiago Henrique Almeida Domingos](x)
+  * [Vitória Letícia de Oliveira](https://gist.github.com/VitoriaLdo)
 
 A documentação do projeto é estruturada da seguinte forma:
 
