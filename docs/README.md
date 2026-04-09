@@ -9,9 +9,9 @@ Informações básicas do projeto.
   * [Andrew Kaique Ferreira de Paula](https://github.com/4K4i-dev)
   * [Bruno Maciel Lima Silva](https://github.com/BrunoMaciel-r)
   * [Paulo Haniel Macedo de Castro](https://github.com/paulo-h30)
-  * [Pedro Henrique Faria Godinho](x)
+  * [Pedro Henrique Faria Godinho](https://github.com/pedrofariad1)
   * [Sophia Emanuelle de Morais dos Santos](https://github.com/sophiamsantos)
-  * [Thiago Henrique Almeida Domingos](x)
+  * [Thiago Henrique Almeida Domingos](https://github.com/Thiaguim00)
   * [Vitória Letícia de Oliveira](https://gist.github.com/VitoriaLdo)
 
 A documentação do projeto é estruturada da seguinte forma:
@@ -28,95 +28,60 @@ A documentação do projeto é estruturada da seguinte forma:
 
 # Contexto
 
-Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
+O projeto visa desenvolver uma plataforma web para automatizar o controle de inventários, eliminando falhas humanas e processos manuais que geram prejuízos. A ferramenta centraliza dados em tempo real para otimizar o fluxo de mercadorias e garantir que a gestão de ativos seja um motor de crescimento, e não um gargalo operacional.
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+De que maneira a implementação de uma plataforma de gestão automatizada pode mitigar a inconsistência de dados e reduzir as perdas financeiras causadas pela gestão ineficiente de estoque em empresas de pequeno e médio porte?
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+### Objetivo Geral
+* **Desenvolver** e implementar um sistema web que integre o controle de entradas, saídas e a previsibilidade de demanda para otimizar o gerenciamento de mercadorias em tempo real.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+### Objetivos Específicos
+* **Mapear** os principais pontos de erro e gargalos nos processos manuais de inventário atuais;
+* **Desenvolver** uma interface intuitiva para o monitoramento de indicadores de desempenho (KPIs);
+* **Implementar** um sistema de alertas automáticos para níveis críticos de estoque e datas de validade;
+* **Garantir** a sincronização de dados entre diferentes canais de venda (estoque unificado).
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+A justificativa deste projeto fundamenta-se na necessidade de **eficiência financeira** e **sobrevivência de mercado**. O estoque representa um dos maiores ativos de uma empresa e sua má gestão resulta em capital imobilizado ou perda de vendas por falta de produtos. 
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+A transição para um modelo tecnológico (utilizando infraestrutura robusta e, futuramente, inteligência de dados) permite:
+
+1. **Redução de Desperdícios:** Controle rigoroso que evita vencimentos e perdas;
+2. **Tomada de Decisão Estratégica:** Gestores passam a atuar baseados em dados reais, não em suposições;
+3. **Escalabilidade:** A estrutura digital permite que o volume de operações cresça sem que o controle se perca.
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+*A quem se destina a solução.*
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva o mercado para o qual a solução está sendo desenvolvida, detalhando um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc. Adicione informações sobre o público-alvo por meio de uma descrição textual ou por meio do mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+* **Pequenos e Médios Varejistas:** Que buscam digitalizar o controle de suas lojas físicas;
+* **Gestores de E-commerce:** Que necessitam de integração entre vendas online e estoque físico;
+* **Administradores de Almoxarifado:** Profissionais que buscam agilidade na auditoria e rastreabilidade de lotes;
+* **Microempreendedores (MEIs):** Que necessitam de uma ferramenta acessível e simples para organizar seus primeiros fluxos de suprimentos.
 
 # Product Discovery
 
 ## Etapa de Entendimento
+* **Matriz CSD**: Também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
+![](/docs/images/Matriz%20CSD.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> * **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> * **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> * **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> * **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+* **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema;
+
+![](/docs/images/Mapa%20de%20Stakeholders.png)
 
 ## Etapa de Definição
 
 ### Personas
 
-**✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
-
-![Exemplo de proposta de valor](images/exemplo-persona.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-
+![](/docs/images/Persona1.jpg)
+![](/docs/images/Persona2.jpg)
+![](/docs/images/Persona3.jpg)
 # Product Design
 
 Nesse momento, vamos transformar os insights e validações obtidos em soluções tangíveis e utilizáveis. Essa fase envolve a definição de uma proposta de valor, detalhando a prioridade de cada ideia e a consequente criação de wireframes, mockups e protótipos de alta fidelidade, que detalham a interface e a experiência do usuário.
@@ -125,31 +90,24 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
-| --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão das necessidades de cada persona. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+EU COMO... `PERSONA` | QUERO/PRECISO ... `FUNCIONALIDADE` | PARA ... `MOTIVO/VALOR` |
+| :--- | :--- | :--- |
+| **José Roberto (Proprietário de Depósito)** | Ter uma visualização instantânea de itens em nível crítico | Acabar com as perdas visíveis e invisíveis no meu estoque |
+| **José Roberto (Proprietário de Depósito)** | Acessar o sistema via mobile | Substituir o caderno de papel de forma eficiente enquanto circulo pelo estoque |
+| **Maria Aparecida (Loja de Roupa)** | Saber exatamente quais peças estão disponíveis por tamanho, cor e modelo | Evitar perder vendas por falta de controle e agilizar o atendimento |
+| **Maria Aparecida (Loja de Roupa)** | Um sistema intuitivo com interface visual e poucos cliques | Conseguir usar a ferramenta sem precisar de ajuda técnica |
+| **Lucas Almeida (Hamburgueria)** | Saber em tempo real a quantidade de insumos disponíveis | Não correr o risco de ficar sem ingredientes essenciais durante o expediente |
+| **Lucas Almeida (Hamburgueria)** | Registrar entradas e saídas de forma ágil e direta | Facilitar a organização do dia a dia sem interromper a operação da cozinha |
+| **Administrador do Sistema** | Visualizar um Dashboard com métricas e controle financeiro claro | Ter segurança na tomada de decisões e tranquilidade na gestão do negócio |
 
 ## Proposta de Valor
-
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
-
 ##### Proposta de valor para Persona XPTO ⚠️ EXEMPLO ⚠️
 
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
+![](/docs/images/Proposta1.jpg)
+![](/docs/images/Proposta2.jpg)
+![](/docs/images/Proposta3.jpg)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
 
 ## Requisitos
 
@@ -157,33 +115,30 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                                   | Prioridade |
-| ------ | ---------------------------------------------------------- | ---------- |
-| RF-001 | Permitir que o usuário cadastre tarefas ⚠️ EXEMPLO ⚠️ | ALTA       |
-| RF-002 | Emitir um relatório de tarefas no mês ⚠️ EXEMPLO ⚠️ | MÉDIA     |
+| ID     | Descrição do Requisito                                                                 | Prioridade |
+| ------ | -------------------------------------------------------------------------------------- | ---------- |
+| RF-001 | O sistema deve permitir o registro e o controle de produtos no estoque. | ALTA |
+| RF-002 | O sistema deve fornecer uma ferramenta de busca rápida de produtos. | ALTA |
+| RF-003 | O sistema deve apresentar um dashboard de entrada e saída de mercadorias. | ALTA |
+| RF-004 | O sistema deve permitir a visualização do estoque atualizado em tempo real. | ALTA |
+| RF-005 | O sistema deve disponibilizar funcionalidade de login e cadastro de usuários. | ALTA |
+| RF-006 | O sistema deve permitir o controle de validade dos produtos. | MÉDIA |
+| RF-007 | O sistema deve registrar o histórico de movimentações de estoque. | MÉDIA |
+| RF-008 | O sistema deve auxiliar na previsão de compras baseada nos dados do sistema.| MÉDIA |
+| RF-009 | O sistema deve permitir a configuração de usuários com diferentes níveis de acesso. | MÉDIA |
+| RF-010 | O sistema deve realizar o controle de custos por produto. | MÉDIA |
+| RF-011 | O sistema deve permitir o armazenamento de Notas Fiscais (NF's) de entrada. | BAIXA |
+| RF-012 | O sistema deve gerar relatórios básicos e dashboards visuais avançados. | BAIXA |
 
-### Requisitos não Funcionais
+### Requisitos Não Funcionais
 
-| ID      | Descrição do Requisito                                                              | Prioridade |
-| ------- | ------------------------------------------------------------------------------------- | ---------- |
-| RNF-001 | O sistema deve ser responsivo para rodar em um dispositivos móvel ⚠️ EXEMPLO ⚠️ | MÉDIA     |
-| RNF-002 | Deve processar requisições do usuário em no máximo 3s ⚠️ EXEMPLO ⚠️          | BAIXA      |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Os requisitos de um projeto são classificados em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na plataforma (ex: cadastro de usuário).
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Orientações**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+| ID      | Descrição do Requisito                                                                                             | Prioridade |
+| ------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
+| RNF-001 | **Usabilidade**: O sistema deve possuir uma interface direta, fácil e simplificada para o usuário. | ALTA |
+| RNF-002 | **Confiabilidade**: O sistema deve centralizar as informações em um único sistema para evitar divergências. | ALTA |
+| RNF-003 | **Disponibilidade**: O sistema deve oferecer um manual de uso para auxílio imediato ao usuário. | MÉDIA |
+| RNF-004 | **Estética**: O sistema deve possuir uma página inicial bem elaborada e melhorias constantes no layout. | BAIXA |
+| RNF-005 | **Padronização**: A interface deve seguir uma padronização de cores, temas e ajustes visuais de usabilidade. | BAIXA |
 
 ## Projeto de Interface
 

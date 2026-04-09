@@ -2,29 +2,35 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Ferreira de Paula
+    given-names: Andrew Kaique
+  - family-names: Lima Silva
+    given-names: Bruno Maciel 
+  - family-names: Macedo de Castro
+    given-names: Paulo Haniel
+  - family-names: Faria Godinho
+    given-names: Pedro Henrique
+  - family-names:  de Morais dos Santos
+    given-names: Sophia Emanuelle
+  - family-names: Almeida Domingos
+    given-names: Thiago Henrique
+  - family-names: de Oliveia
+    given-names: Vitória Letícia
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Dias Maciel 
+    given-names: Wesley
 keywords:
-  - 
-  - 
+  - Estoque
+  - Inventário
+  - Gestão
+  - Produtos
+  - Armazém
+  - Controle
+  - Logística
+  - Suprimentos
+  - Distribuição
+  - Mercadorias
 repository-code: 
 license: CC-BY-4.0
 version: 1.0.0
