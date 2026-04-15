@@ -2,7 +2,7 @@
 
 Informações básicas do projeto.
 
-* **Projeto:** [NOME DO PROJETO]
+* **Projeto:** STOCK.TECH
 * **Repositório GitHub:** [https://github.com/ICEI-PUC-Minas-PBR-ADS/pbr-ads-2026-1-p1-tiaw-t1-722102-gestao-de-estoque.git]
 * **Membros da equipe:**
 
@@ -164,14 +164,14 @@ Estes são os protótipos de telas do sistema.
 
 Descrição para a tela XPTO
 
-![wireframe1](c:\Users\1623864\Pictures\Screenshots\wireframe1.png)
-![wireframe2](c:\Users\1623864\Pictures\Screenshots\wireframe2.png)
-![wireframe3](c:\Users\1623864\Pictures\Screenshots\wireframe3.png)
-![wireframe4](c:\Users\1623864\Pictures\Screenshots\wireframe4.png)
-![wireframe5](c:\Users\1623864\Pictures\Screenshots\wireframe5.png)
-![wireframe6](c:\Users\1623864\Pictures\Screenshots\wireframe6.png)
-![wireframe7](c:\Users\1623864\Pictures\Screenshots\wireframe7.png)
-![wireframe8](c:\Users\1623864\Pictures\Screenshots\wireframe8.png)
+![wireframe1](/docs/images/wireframe1.png)
+![wireframe2](/docs/images/wireframe2.png)
+![wireframe3](/docs/images/wireframe3.png)
+![wireframe4](/docs/images/wireframe4.png)
+![wireframe5](/docs/images/wireframe5.png)
+![wireframe6](/docs/images/wireframe6.png)
+![wireframe7](/docs/images/wireframe7.png)
+![wireframe8](/docs/images/wireframe8.png)
 >
 > Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
 >
@@ -184,10 +184,10 @@ Descrição para a tela XPTO
 
 ### User Flow
 
-![userflow1](c:\Users\1623864\Pictures\Screenshots\useflow1.png)
-![userflow2](c:\Users\1623864\Pictures\Screenshots\useflow2.png)
-![userflow3](c:\Users\1623864\Pictures\Screenshots\useflow3.png)
-![userflow4](c:\Users\1623864\Pictures\Screenshots\useflow4.png)
+![userflow1](/docs/images/useflow1.png)
+![userflow2](/docs/images/useflow2.png)
+![userflow3](/docs/images/useflow3.png)
+![userflow4](/docs/images/useflow4.png)
 
 > Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
 >
@@ -231,13 +231,8 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
 
-![Exemplo de Kanban](images/exemplo-kanban.png)
+![Exemplo de Kanban](/docs/images/KABAN.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar  o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
 >
 > **Orientações**:
 >
