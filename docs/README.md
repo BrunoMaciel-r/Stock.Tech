@@ -77,6 +77,16 @@ A transição para um modelo tecnológico (utilizando infraestrutura robusta e, 
 
 ## Etapa de Definição
 
+Pesquisa e Entendimento do Problema
+
+A gestão de estoque é um desafio comum em pequenas e médias empresas, principalmente devido ao uso de métodos manuais, como planilhas e anotações. Esses métodos aumentam a chance de erros, como informações desatualizadas, perda de produtos e inconsistência nos dados.
+
+Além disso, a falta de controle em tempo real dificulta a tomada de decisões, como reposição de produtos e planejamento de compras. Isso pode gerar dois problemas principais: a falta de mercadorias, causando perda de vendas, e o excesso de estoque, resultando em desperdício e capital parado.
+
+Outro fator relevante é a ausência de integração entre setores, como vendas e estoque, o que torna o processo mais lento e menos eficiente. Dessa forma, percebe-se a necessidade de soluções tecnológicas que automatizem esses processos, reduzam falhas humanas e melhorem a organização das empresas.
+
+
+
 ### Personas
 
 ![](/docs/images/Persona1.jpg)
@@ -154,9 +164,14 @@ Estes são os protótipos de telas do sistema.
 
 Descrição para a tela XPTO
 
-![Exemplo de wireframe](images/exemplo-wireframe.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
+![](c:\Users\1623864\Pictures\Screenshots\wireframe1.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe2.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe3.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe4.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe5.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe6.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe7.png)
+![](c:\Users\1623864\Pictures\Screenshots\wireframe8.png)
 >
 > Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
 >
@@ -169,12 +184,11 @@ Descrição para a tela XPTO
 
 ### User Flow
 
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
+![](c:\Users\1623864\Pictures\Screenshots\useflow1.png)
+![](c:\Users\1623864\Pictures\Screenshots\useflow2.png)
+![](c:\Users\1623864\Pictures\Screenshots\useflow3.png)
+![](c:\Users\1623864\Pictures\Screenshots\useflow4.png)
 
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
 > Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
 >
 > **Orientações**:
