@@ -164,14 +164,14 @@ Estes são os protótipos de telas do sistema.
 
 Descrição para a tela XPTO
 
-![](c:\Users\1623864\Pictures\Screenshots\wireframe1.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe2.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe3.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe4.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe5.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe6.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe7.png)
-![](c:\Users\1623864\Pictures\Screenshots\wireframe8.png)
+![wireframe1](c:\Users\1623864\Pictures\Screenshots\wireframe1.png)
+![wireframe2](c:\Users\1623864\Pictures\Screenshots\wireframe2.png)
+![wireframe3](c:\Users\1623864\Pictures\Screenshots\wireframe3.png)
+![wireframe4](c:\Users\1623864\Pictures\Screenshots\wireframe4.png)
+![wireframe5](c:\Users\1623864\Pictures\Screenshots\wireframe5.png)
+![wireframe6](c:\Users\1623864\Pictures\Screenshots\wireframe6.png)
+![wireframe7](c:\Users\1623864\Pictures\Screenshots\wireframe7.png)
+![wireframe8](c:\Users\1623864\Pictures\Screenshots\wireframe8.png)
 >
 > Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
 >
@@ -184,10 +184,10 @@ Descrição para a tela XPTO
 
 ### User Flow
 
-![](c:\Users\1623864\Pictures\Screenshots\useflow1.png)
-![](c:\Users\1623864\Pictures\Screenshots\useflow2.png)
-![](c:\Users\1623864\Pictures\Screenshots\useflow3.png)
-![](c:\Users\1623864\Pictures\Screenshots\useflow4.png)
+![userflow1](c:\Users\1623864\Pictures\Screenshots\useflow1.png)
+![userflow2](c:\Users\1623864\Pictures\Screenshots\useflow2.png)
+![userflow3](c:\Users\1623864\Pictures\Screenshots\useflow3.png)
+![userflow4](c:\Users\1623864\Pictures\Screenshots\useflow4.png)
 
 > Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
 >
