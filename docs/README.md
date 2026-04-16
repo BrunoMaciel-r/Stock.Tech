@@ -217,25 +217,55 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 | Ambiente                    | Plataforma | Link de acesso                                     |
 | --------------------------- | ---------- | -------------------------------------------------- |
-| Processo de Design Thinking | Miro       | https://miro.com/XXXXXXX ⚠️ EXEMPLO ⚠️        |
-| Repositório de código     | GitHub     | https://github.com/XXXXXXX ⚠️ EXEMPLO ⚠️      |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
-| Protótipo Interativo       | MarvelApp  | https://marvelapp.com/XXXXXXX ⚠️ EXEMPLO ⚠️   |
+| Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVGtgsglc=/?share_link_id=664930094612        |
+| Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-PBR-ADS/pbr-ads-2026-1-p1-tiaw-t1-722102-gestao-de-estoque.git      |
+| Protótipo Interativo       | Figma  | https://www.figma.com/design/zr3j44N13WegE4wui7BqWa/Prototipo-interativo?node-id=0-1&t=kihCAzdEOi9nsAAR-1   |
 |                             |            |                                                    |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Liste as ferramentas empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível. Inclua itens como: (1) Editor de código, (2) )ferramentas de comunicação, (3) )ferramentas de diagramação, (4) )plataformas de hospedagem, entre outras.
-
 ## Gerenciamento do Projeto
 
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
+Organização da Equipe e Divisão de Tarefas
 
-![Exemplo de Kanban](/docs/images/KABAN.png)
+A equipe organizou a divisão das atividades de forma estratégica, distribuindo as funcionalidades do sistema entre os integrantes, de acordo com suas responsabilidades no desenvolvimento do projeto.
 
->
+Cada membro ficou responsável por uma parte específica da aplicação, contribuindo tanto no desenvolvimento quanto na integração das funcionalidades.
+
+A divisão das tarefas ocorreu da seguinte forma:
+
+Andrew Kaique Ferreira de Paula: Desenvolvimento do dashboard e visão geral do sistema;
+Bruno Maciel Lima Silva: Desenvolvimento do módulo financeiro;
+Vitória Letícia de Oliveira: Responsável pela funcionalidade de movimentações de estoque;
+Sophia Emanuelle de Morais dos Santos: Desenvolvimento do módulo de cadastro e gerenciamento de produtos;
+Paulo Haniel Macedo de Castro: Responsável pelo módulo de pedidos de venda;
+Thiago Henrique Almeida Domingos: Desenvolvimento do módulo de contatos;
+Pedro Henrique Faria Godinho: Responsável pela área de FAQ (Perguntas Frequentes).
+
+Além disso, a equipe colaborou em conjunto na construção da tela inicial do sistema, garantindo uma visão geral clara e intuitiva para o usuário.
+
+Essa divisão permitiu maior organização, produtividade e especialização nas funcionalidades, facilitando o desenvolvimento do projeto de forma colaborativa.
+
+![Kaban](/docs/images/KABAN.png)
+
+## Referências Bibliográficas
+
+GESTÃO PRO. Como o ERP para pequenas empresas transforma o controle de estoque. Disponível em: https://gestaopro.com.br/blog/estoque/como-o-erp-para-pequenas-empresas-transforma-o-controle-de-estoque
+. Acesso em: 8 abr. 2026.
+→ Utilizado para embasar a importância da automação na gestão de estoque.
+
+GESTÃO PRO. Erros comuns na gestão de estoque e como um sistema pode resolver. Disponível em: https://gestaopro.com.br/blog/gestao/erros-comuns-na-gestao-de-estoque-e-como-um-sistema-pode-resolver
+. Acesso em: 8 abr. 2026.
+→ Utilizado para identificar falhas frequentes nos processos manuais.
+
+ANDRA SISTEMAS. Gestão de estoque para pequenos negócios. Disponível em: https://www.andrasistemas.com.br/blog/gestao-de-estoque-para-pequenos-negocios
+. Acesso em: 8 abr. 2026.
+→ Utilizado para reforçar a importância da organização e controle eficiente.
+
+Controle de estoque nas microempresas. Arquivo em formato PDF. Acesso em: 07 mar. 2026.
+→ Utilizado para compreender as principais funcionalidades necessárias em um sistema de gestão de estoque, especialmente no contexto de microempresas.
+
+PLATAFORMA FLASH. Sistema administrativo (acesso restrito). Acesso em: 28 mar. 2026.
+→ Utilizado como referência visual para o desenvolvimento do design da interface, especialmente o menu lateral e a estrutura geral do sistema.
+
 > **Orientações**:
->
 > - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 > - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
 > - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
