@@ -1,7 +1,5 @@
 # Código Fonte
 
-A pasta `codigo` serve para a manter o programa que vocês vão construir no contexto dessa disciplina. Se necessário, descreva neste arquivo aspectos relevantes da estrutura de diretórios criada para organização do código do seu projeto.
-
 **IMPORTANTE**: O uso do JSON Server e do ambiente baseado no Node.js é obrigatório.
 
 Uma sugestão da estrutura de diretórios para o projeto é a seguinte:

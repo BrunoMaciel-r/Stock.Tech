@@ -85,13 +85,12 @@ Além disso, a falta de controle em tempo real dificulta a tomada de decisões, 
 
 Outro fator relevante é a ausência de integração entre setores, como vendas e estoque, o que torna o processo mais lento e menos eficiente. Dessa forma, percebe-se a necessidade de soluções tecnológicas que automatizem esses processos, reduzam falhas humanas e melhorem a organização das empresas.
 
-
-
 ### Personas
 
 ![](/docs/images/Persona1.jpg)
 ![](/docs/images/Persona2.jpg)
 ![](/docs/images/Persona3.jpg)
+
 # Product Design
 
 Nesse momento, vamos transformar os insights e validações obtidos em soluções tangíveis e utilizáveis. Essa fase envolve a definição de uma proposta de valor, detalhando a prioridade de cada ideia e a consequente criação de wireframes, mockups e protótipos de alta fidelidade, que detalham a interface e a experiência do usuário.
@@ -160,21 +159,32 @@ Estes são os protótipos de telas do sistema.
 
 **✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
 
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
+##### TELA XPTO 
 
-Descrição para a tela XPTO
-
+Tela inicial de apresentação e introdução do site.
 ![wireframe1](/docs/images/wireframe1.png)
+
+Dashboard onde o cliente terá acesso a suas métricas.
 ![wireframe2](/docs/images/wireframe2.png)
+
+Financeiro para ter controle de gastos e ganhos.
 ![wireframe3](/docs/images/wireframe3.png)
+
+Movimentações em tempo real para mostrar saídas e entradas de forma clara e objetiva.
 ![wireframe4](/docs/images/wireframe4.png)
+
+Produtos cadastrados na loja.
 ![wireframe5](/docs/images/wireframe5.png)
+
+Seção de vendas dos produtos disponíveis em estoque.
 ![wireframe6](/docs/images/wireframe6.png)
+
+Cadastro e armazenamento de clientes e fornecedores.
 ![wireframe7](/docs/images/wireframe7.png)
+
+Orientações de uso do site, para ajudar no suporte ao cliente.
 ![wireframe8](/docs/images/wireframe8.png)
->
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
->
+
 > **Orientações**:
 >
 > - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
