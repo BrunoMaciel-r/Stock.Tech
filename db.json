@@ -1,0 +1,17 @@
+{
+  "avaliacoes": [
+    {
+      "nome": "Rayan",
+      "funcao": "Gerente",
+      "avaliacao": "Gostei do site.",
+      "id": "3bG9gndWUTM"
+    },
+    {
+      "nome": "Arthur",
+      "funcao": "Gerente",
+      "avaliacao": "Amei o site.",
+      "id": "PNwm95ZQf7M"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
