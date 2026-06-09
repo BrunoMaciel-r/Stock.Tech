@@ -12,47 +12,14 @@ const DADOS_INICIAIS = {
         { id: "3", nome: "Comercial & Vendas" },
         { id: "4", nome: "TI & Sistemas" }
     ],
-    produtos: [
-        { id: "1", nome: "Notebook Dell Inspiron", preco: 3500, precoCusto: 2700, quantidade: 15, vendasNoMes: 45, codigo: "PROD-001", categoria: "TI & Sistemas", unidade: "UN", descricao: "Notebook Dell Inspiron 15 polegadas" },
-        { id: "2", nome: "Monitor LG 24''", preco: 850, precoCusto: 600, quantidade: 30, vendasNoMes: 38, codigo: "PROD-002", categoria: "TI & Sistemas", unidade: "UN", descricao: "Monitor LG 24 polegadas IPS" },
-        { id: "3", nome: "Mouse Sem Fio Logitech", preco: 120, precoCusto: 70, quantidade: 80, vendasNoMes: 32, codigo: "PROD-003", categoria: "TI & Sistemas", unidade: "UN", descricao: "Mouse Sem Fio Logitech M280" },
-        { id: "4", nome: "Teclado Mecânico RGB", preco: 350, precoCusto: 200, quantidade: 25, vendasNoMes: 28, codigo: "PROD-004", categoria: "TI & Sistemas", unidade: "UN", descricao: "Teclado mecânico RGB Switch Outemu Blue" },
-        { id: "5", nome: "Cadeira Ergonomica", preco: 1200, precoCusto: 850, quantidade: 10, vendasNoMes: 15, codigo: "PROD-005", categoria: "Logística & Estoque", unidade: "UN", descricao: "Cadeira Ergonomica NR17" }
-    ],
-    vendas: [
-        { id: "1", cliente: "Ana Silva", data: "2026-05-10", valorTotal: 3500, lucro: 800, pagamento: "Pix", status: "concluido" },
-        { id: "2", cliente: "Carlos Oliveira", data: "2026-05-11", valorTotal: 1700, lucro: 450, pagamento: "Cartão de Crédito", status: "concluido" },
-        { id: "3", cliente: "Beatriz Costa", data: "2026-05-12", valorTotal: 850, lucro: 200, pagamento: "Dinheiro", status: "concluido" }
-    ],
-    movimentacoesGrafico: [
-        { data: "28/04", qtd: 120 }, { data: "29/04", qtd: 130 }, { data: "30/04", qtd: 140 },
-        { data: "01/05", qtd: 110 }, { data: "02/05", qtd: 160 }, { data: "03/05", qtd: 90 },
-        { data: "04/05", qtd: 210 }, { data: "05/05", qtd: 180 }, { data: "06/05", qtd: 250 },
-        { data: "07/05", qtd: 300 }, { data: "08/05", qtd: 150 }, { data: "09/05", qtd: 170 },
-        { data: "10/05", qtd: 220 }, { data: "11/05", qtd: 190 }, { data: "12/05", qtd: 280 }
-    ],
-    notas: [
-        { id: "1", titulo: "Inventário Geral Semestral", categoria: "Logística & Estoque", status: "Pendente", urgencia: "Alta", descricao: "Realizar contagem física de todo o estoque no final de semana.", criadoEm: new Date().toISOString() }
-    ],
-    contasPagar: [
-        { id: "1", nome: "Energia Elétrica", valor: 350.50, vencimento: "2026-06-15", categoria: "Financeiro", pago: false },
-        { id: "2", nome: "Internet Fibra", valor: 120.00, vencimento: "2026-06-18", categoria: "TI & Sistemas", pago: true },
-        { id: "3", nome: "Aluguel Galpão", valor: 2500.00, vencimento: "2026-06-10", categoria: "Logística & Estoque", pago: false }
-    ],
-    movimentacoes: [
-        { id: "MOV-001", nome: "Notebook Dell Inspiron", tipo: "entrada", categoria: "TI & Sistemas", valor: 2700, data: "2026-05-10", descricao: "Entrada de estoque de reposição" },
-        { id: "MOV-002", nome: "Monitor LG 24''", tipo: "venda", categoria: "TI & Sistemas", valor: 850, data: "2026-05-11", descricao: "Venda realizada pelo comercial" },
-        { id: "MOV-003", nome: "Cadeira Ergonomica", tipo: "devolucao", categoria: "Logística & Estoque", valor: 1200, data: "2026-05-12", descricao: "Devolução de cliente por defeito leve" }
-    ],
-    contatos: [
-        { id: "1", nome: "Fornecedor Dell Brasil", telefone: "(11) 99999-8888", email: "contato@dell.com.br" },
-        { id: "2", nome: "Transportadora Rápida", telefone: "(31) 98888-7777", email: "entrega@rapida.com.br" },
-        { id: "3", nome: "Cliente João Souza", telefone: "(21) 97777-6666", email: "joao@gmail.com" }
-    ],
-    avaliacoes: [
-        { nome: "Mariana Souza", funcao: "Gerente Financeira", avaliacao: "O módulo financeiro nos ajudou a controlar as contas a pagar de forma excelente." },
-        { nome: "Felipe Neto", funcao: "Supervisor de Estoque", avaliacao: "O controle de movimentações integrado ajudou muito a evitar perdas." }
-    ]
+    produtos: [],
+    vendas: [],
+    movimentacoesGrafico: [],
+    notas: [],
+    contasPagar: [],
+    movimentacoes: [],
+    contatos: [],
+    avaliacoes: []
 };
 
 // --- Funções do Banco de Dados ---
