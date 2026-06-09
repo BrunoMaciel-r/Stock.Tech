@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos · Stock.tech</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="contatos.css">
+</head>
+<body>
+
+    <!-- Placeholders para Componentes Globais Injetados via JS -->
+    <div id="sidebar-container"></div>
+
+    <!-- Conteúdo Principal do Sistema (Wrapper) -->
+    <div class="main-wrapper" id="main-wrapper">
+        
+        <div id="topbar-container"></div>
+        <div id="modal-config-container"></div>
+
+        <!-- PÁGINA -->
+        <main class="page-content">
+            <section class="contatos-container">
+                <div class="topo-contatos">
+                    <div class="acoes-topo" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:30px;">
+                        <div class="search-box" style="position:relative; flex:1; max-width:400px; display:flex; align-items:center; background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; height:48px; padding:0 15px;">
+                            <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); margin-right:10px;"></i>
+                            <input type="text" id="pesquisa-contatos" placeholder="Pesquisar contatos..." style="width:100%; border:none; outline:none; background:transparent; color:var(--text-dark); font-size:14px;">
+                        </div>
+
+                        <button class="btn-primary" id="btn-novo-contato" style="height:48px; border-radius:12px; display:inline-flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-user-plus"></i> Novo Contato
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lista de Contatos Premium -->
+                <div class="contatos-grid" id="listaContatos">
+                    <!-- Cards inseridos via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL ADICIONAR / EDITAR CONTATO -->
+    <div class="modal-overlay" id="modalContato">
+        <div class="modal-box" style="max-width: 480px;">
+            <div class="modal-head">
+                <h3 id="tituloModalContato">Adicionar Contato</h3>
+                <button class="modal-close" id="btn-fechar-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="form-contato">
+                    <input type="hidden" id="contato-id">
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="nome">Nome Completo *</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do fornecedor ou cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="telefone">Telefone / WhatsApp *</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">E-mail *</label>
+                        <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" required>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-foot">
+                <button class="btn-ghost" id="btn-cancelar">Cancelar</button>
+                <button class="btn-primary" id="btn-salvar-contato">Salvar Contato</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../../js/global.js"></script>
+    <script src="contatos.js"></script>
+</body>
+</html>

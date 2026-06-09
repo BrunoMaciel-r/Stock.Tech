@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentações · Stock.tech</title>
+    <!-- FONTES E ÍCONES -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="movimentacoes.css">
+</head>
+<body>
+
+    <!-- Placeholders para Componentes Globais Injetados via JS -->
+    <div id="sidebar-container"></div>
+
+    <!-- Conteúdo Principal do Sistema (Wrapper) -->
+    <div class="main-wrapper" id="main-wrapper">
+        
+        <div id="topbar-container"></div>
+        <div id="modal-config-container"></div>
+
+        <!-- PÁGINA -->
+        <main class="page-content">
+            <section class="movimentacoes-container">
+                <div class="topo-movimentacoes">
+                    <div class="acoes-topo">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="pesquisa" placeholder="Pesquisar movimentações...">
+                        </div>
+
+                        <select id="filtroTipo" class="form-control" style="width:auto; cursor:pointer;">
+                            <option value="todos">Todos os tipos</option>
+                            <option value="entrada">Entrada</option>
+                            <option value="venda">Venda</option>
+                            <option value="devolucao">Devolução</option>
+                        </select>
+
+                        <button class="btn-primary" id="btnNovaMovimentacao">+ Movimentação</button>
+                        <button class="btn-ghost" id="btnLimpar">Limpar</button>
+                    </div>
+                </div>
+
+                <!-- Grade de Cards de Movimentações -->
+                <div class="cards-movimentacoes" id="cardsContainer"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL MOVIMENTAÇÃO -->
+    <div class="modal-overlay" id="modalMovimentacao">
+        <div class="modal-box modal-form">
+            <div class="modal-head">
+                <h3 id="tituloModalMov">Nova Movimentação</h3>
+                <button class="modal-close" id="fecharModalMov">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="form-movimentacao">
+                    <input type="hidden" id="movId">
+
+                    <div class="form-group">
+                        <label class="form-label" for="movNome">Produto *</label>
+                        <input type="text" class="form-control" id="movNome" required autocomplete="off">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="movTipo">Tipo *</label>
+                            <select class="form-control" id="movTipo" required>
+                                <option value="entrada">Entrada</option>
+                                <option value="venda">Venda</option>
+                                <option value="devolucao">Devolução</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="movCategoria">Categoria</label>
+                            <input type="text" class="form-control" id="movCategoria" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="movValor">Valor *</label>
+                            <input type="number" class="form-control" id="movValor" required step="0.01" min="0" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="movData">Data *</label>
+                            <input type="date" class="form-control" id="movData" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="movDescricao">Descrição</label>
+                        <textarea class="form-control" id="movDescricao" rows="3" autocomplete="off"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-foot">
+                <button class="btn-ghost" id="cancelarMov">Cancelar</button>
+                <button class="btn-primary" id="salvarMov">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EXCLUIR -->
+    <div class="modal-overlay" id="modalExcluir">
+        <div class="modal-box modal-confirmacao" style="max-width:400px; text-align:center;">
+            <div class="confirmacao-content" style="padding: 10px;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 40px; color: var(--danger); margin-bottom:15px;"></i>
+                <h3>Deseja realmente excluir?</h3>
+                <p style="color:var(--text-muted); font-size:13px; margin: 10px 0 20px 0;">Essa ação não poderá ser desfeita e afetará o saldo financeiro do sistema.</p>
+
+                <div class="confirmacao-botoes" style="display:flex; justify-content:center; gap:10px;">
+                    <button class="btn-ghost" id="cancelarExcluir">Cancelar</button>
+                    <button class="btn-danger" id="confirmarExcluir">Sim, Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../../js/global.js"></script>
+    <script src="movimentacoes.js"></script>
+</body>
+</html>

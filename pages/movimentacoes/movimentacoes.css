@@ -1,0 +1,205 @@
+/* ==========================================================================
+   ESTILIZAÇÃO ESPECÍFICA DO MÓDULO DE MOVIMENTAÇÕES
+   ========================================================================== */
+
+.movimentacoes-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inicio da página */
+.topo-movimentacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.topo-movimentacoes h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--green-main);
+}
+
+.acoes-topo, .mov-left, .mov-right, .acoes-card {
+    display: flex;
+    align-items: center;
+}
+
+.acoes-topo {
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Pesquisa */
+.search-box {
+    width: 360px;
+    height: 48px;
+    padding: 0 16px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.search-box i {
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+/* Filtro e Botões */
+select {
+    height: 48px;
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 0 18px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-dark);
+}
+
+/* Cards */
+.cards-movimentacoes {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.mov-card {
+    width: 100%;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.mov-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mov-left {
+    gap: 14px;
+}
+
+.mov-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mov-nome {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.mov-info small {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Tipos de movimentações */
+.badge.entrada {
+    background: #d9f8dd;
+    color: #1f8f3d;
+}
+
+.badge.venda {
+    background: #dbeeff;
+    color: #1976d2;
+}
+
+.badge.devolucao {
+    background: #ffdede;
+    color: #d32f2f;
+}
+
+/* Icones */
+.mov-right {
+    gap: 20px;
+}
+
+.produto-id {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.acoes-card {
+    gap: 14px;
+}
+
+.acoes-card i {
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.acoes-card i:hover {
+    transform: scale(1.1);
+}
+
+.fa-pen-to-square {
+    color: #2e7d32;
+}
+
+.fa-trash {
+    color: #d32f2f;
+}
+
+/* Valor e Data */
+.mov-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mov-valor {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green-main);
+}
+
+.mov-data {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .acoes-topo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box,
+    .mov-right {
+        width: 100%;
+    }
+
+    .mov-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .mov-right {
+        justify-content: space-between;
+    }
+}

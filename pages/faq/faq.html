@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ · Stock.tech</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="faq.css" />
+</head>
+<body>
+
+    <!-- Placeholders para Componentes Globais Injetados via JS -->
+    <div id="sidebar-container"></div>
+
+    <!-- Conteúdo Principal do Sistema (Wrapper) -->
+    <div class="main-wrapper" id="main-wrapper">
+
+        <div id="topbar-container"></div>
+        <div id="modal-config-container"></div>
+
+        <!-- PÁGINA -->
+        <main class="page-content">
+            <!-- PESQUISA E TICKET -->
+            <div class="faq-search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="faqSearch" placeholder="Pesquisar artigos de suporte...">
+                </div>
+                <button id="abrirTicket" class="btn-primary" style="height:48px; border-radius:12px;">
+                    <i class="fa-solid fa-headset"></i> Abrir Ticket
+                </button>
+            </div>
+
+            <!-- TÍTULO -->
+            <div class="faq-header" style="margin: 30px 0 20px 0;">
+                <h2>Perguntas Frequentes (Artigos)</h2>
+            </div>
+
+            <!-- CARDS DE ARTIGOS -->
+            <div class="faq-grid" id="faqGrid">
+                <!-- CARD 1 -->
+                <div class="faq-card" data-titulo="como adicionar um novo produto ao estoque">
+                    <div class="faq-content">
+                        <h3>1. Como adicionar um novo produto ao estoque?</h3>
+                        <p>Para adicionar um produto, acesse o menu de Produtos e clique no botão lateral "Novo Produto".</p>
+                        <div class="faq-extra">
+                            <p>Siga o passo a passo detalhado:</p>
+                            <ul>
+                                <li>Abra o menu lateral e vá em <strong>Produtos</strong>.</li>
+                                <li>Clique em <strong>Novo Produto</strong> na coluna da direita.</li>
+                                <li>Insira o nome, código, preço de custo, preço de venda e quantidade inicial.</li>
+                                <li>Clique em <strong>Salvar Produto</strong> para concluir.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="faq-card" data-titulo="como editar as informacoes de um produto">
+                    <div class="faq-content">
+                        <h3>2. Como editar as informações de um produto?</h3>
+                        <p>Você pode editar qualquer informação do produto acessando a tela de gerenciamento de Produtos.</p>
+                        <div class="faq-extra">
+                            <ul>
+                                <li>Vá em <strong>Produtos</strong>.</li>
+                                <li>Encontre o produto que deseja alterar.</li>
+                                <li>Clique no ícone de lápis (editar) no card correspondente.</li>
+                                <li>Modifique os campos necessários.</li>
+                                <li>Clique em <strong>Salvar Produto</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="faq-card" data-titulo="por que nao aparecem informacoes no dashboard">
+                    <div class="faq-content">
+                        <h3>3. Por que não aparecem informações no dashboard?</h3>
+                        <p>Isso acontece se não existirem dados correspondentes no período de dias selecionado.</p>
+                        <div class="faq-extra">
+                            <ul>
+                                <li>Cadastre novos produtos e adicione movimentações no estoque.</li>
+                                <li>Ajuste o filtro de dias no cabeçalho superior do Dashboard (e.g. mude para 30 ou 90 dias).</li>
+                                <li>Clique no botão circular de atualizar dados no Dashboard para forçar o recarregamento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="faq-card" data-titulo="como remover um produto do estoque">
+                    <div class="faq-content">
+                        <h3>4. Como remover um produto do estoque?</h3>
+                        <p>Saiba como remover produtos cadastrados permanentemente do sistema.</p>
+                        <div class="faq-extra">
+                            <ul>
+                                <li>Acesse o menu <strong>Produtos</strong>.</li>
+                                <li>Localize o produto que deseja apagar.</li>
+                                <li>Clique na lixeira vermelha no card correspondente.</li>
+                                <li>Confirme o aviso do navegador clicando em OK.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="faq-card" data-titulo="como funciona o controle de estoque">
+                    <div class="faq-content">
+                        <h3>5. Como funciona o controle de estoque?</h3>
+                        <p>Entenda como o sistema opera e rastreia entradas e saídas de itens.</p>
+                        <div class="faq-extra">
+                            <ul>
+                                <li>Entradas (compras/reposição) somam itens ao estoque.</li>
+                                <li>Vendas (comercial) e Devoluções realizam as saídas e estornos.</li>
+                                <li>Todas as movimentações alimentam o gráfico de linhas do Dashboard automaticamente.</li>
+                                <li>O valor patrimonial do estoque é recalculado com base no preço de custo cadastrado.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="faq-card" data-titulo="como alterar o tema do sistema dark mode">
+                    <div class="faq-content">
+                        <h3>6. Como alterar o tema do sistema para Dark Mode?</h3>
+                        <p>O sistema possui um tema escuro integrado para diminuir a fadiga ocular.</p>
+                        <div class="faq-extra">
+                            <ul>
+                                <li>Clique no ícone de engrenagem no cabeçalho para abrir as <strong>Configurações</strong>.</li>
+                                <li>Clique na aba <strong>Aparência</strong> na barra de navegação esquerda.</li>
+                                <li>Altere o Tema da Interface de Claro para <strong>Escuro (Dark Mode)</strong>.</li>
+                                <li>Clique em <strong>Salvar Mudanças</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
+                </div>
+            </div>
+
+            <!-- BOTÃO MOSTRAR / ESCONDER -->
+            <div class="faq-load-more" style="text-align:center; margin-top:20px;">
+                <button id="toggleFaq" class="btn-ghost" style="padding: 10px 24px; font-weight:600;">Carregar mais artigos</button>
+            </div>
+
+            <!-- SEÇÃO DE AVALIAÇÕES -->
+            <section class="avaliacoes-section" style="margin-top:40px; background:var(--card-bg); padding:25px; border-radius:var(--r-lg); border:1px solid var(--border-color); box-shadow:var(--shadow);">
+                <div class="avaliacoes-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:20px;">
+                    <h2 class="avaliacoes-title" style="font-size:18px; color:var(--text-dark);">Opinião de Usuários</h2>
+                    <button id="toggleFormulario" class="btn-primary"><i class="fa-solid fa-pen-nib"></i> Fazer Avaliação</button>
+                </div>
+
+                <!-- FORMULÁRIO (OCULTO POR PADRÃO) -->
+                <div class="avaliacao-form hidden-form" id="formularioAvaliacao" style="display:none; border-top:1px solid var(--border-color); padding-top:20px; margin-bottom:20px; animation: modalIn 0.3s ease;">
+                    <h3 style="font-size:15px; font-weight:600; margin-bottom:15px; color:var(--text-dark);">Nova Avaliação</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="aval-nome" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Função / Cargo</label>
+                            <input type="text" class="form-control" id="aval-funcao" placeholder="Ex: Diretor, Estoquista">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Seu Comentário</label>
+                        <textarea class="form-control" id="aval-texto" rows="3" placeholder="O que você acha da plataforma?"></textarea>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end; gap:10px;">
+                        <button id="btnCancelarAvaliacao" class="btn-ghost">Cancelar</button>
+                        <button id="btnEnviar" class="btn-primary">Enviar Comentário</button>
+                    </div>
+                </div>
+
+                <!-- LISTA DE AVALIAÇÕES -->
+                <div id="listaAvaliacoes" class="lista-avaliacoes" style="display:flex; flex-direction:column; gap:15px;">
+                    <!-- Preenchido via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL TICKET -->
+    <div class="modal-overlay" id="ticketModal">
+        <div class="modal-box" style="max-width: 480px;">
+            <div class="modal-head">
+                <h3>Abrir Ticket de Suporte</h3>
+                <button id="fecharTicket" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="form-ticket">
+                    <div class="form-group">
+                        <label class="form-label" for="ticketNome">Nome Completo *</label>
+                        <input type="text" class="form-control" id="ticketNome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticketEmail">E-mail *</label>
+                        <input type="email" class="form-control" id="ticketEmail" placeholder="seuemail@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticketMensagem">Mensagem / Dúvida *</label>
+                        <textarea class="form-control" id="ticketMensagem" rows="4" placeholder="Descreva seu problema com detalhes..." required></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-foot">
+                <button id="btnCancelarTicket" class="btn-ghost">Cancelar</button>
+                <button id="enviarTicket" class="btn-primary">Enviar Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../../js/global.js"></script>
+    <script src="faq.js"></script>
+</body>
+</html>

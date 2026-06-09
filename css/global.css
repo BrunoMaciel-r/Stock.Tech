@@ -1,0 +1,843 @@
+/* ==========================================================================
+   1. IMPORTAÇÕES EXTERNAS E CONFIGURAÇÕES BASE
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --green-main: #1b5e20;
+    --green-hover: #2e7d32;
+    --green-light: #81c784;
+
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+
+    --r-md: 8px;
+    --r-lg: 14px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --font: 'Poppins', sans-serif;
+
+    /* Menu Lateral (Sidebar) */
+    --sidebar-bg: var(--green-main);
+    --sidebar-hover: var(--green-hover);
+    --sidebar-text: #ffffff;
+    --sidebar-category: #a5d6a7;
+    --sidebar-logo-span: var(--green-light);
+    --sidebar-icon: var(--green-light);
+    --sidebar-active-border: var(--green-light);
+    --sidebar-border: var(--green-hover);
+    --sidebar-logout-hover: #ffcdd2;
+
+    /* Status e Feedback */
+    --success: #2e7d32;
+    --danger: #d32f2f;
+    --warning: #f57c00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    display: flex;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.text-muted {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+/* ==========================================================================
+   2. TEMA ESCURO (DARK MODE)
+   ========================================================================== */
+body[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-dark: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+
+    /* Menu Lateral (Dark Mode) */
+    --sidebar-bg: #1e293b;
+    --sidebar-hover: #334155;
+    --sidebar-text: #f8fafc;
+    --sidebar-category: #94a3b8;
+    --sidebar-logo-span: #4ade80;
+    --sidebar-icon: #94a3b8;
+    --sidebar-active-border: #4ade80;
+    --sidebar-border: #334155;
+    --sidebar-logout-hover: #f87171;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA E CABEÇALHO (LAYOUT)
+   ========================================================================== */
+.main-wrapper {
+    margin-left: 70px;
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 70px);
+}
+
+.topbar {
+    height: 80px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: 0.3s;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.page-content {
+    flex: 1;
+    padding: 30px;
+}
+
+#btn-toggle-sidebar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .topbar {
+        height: 70px;
+        padding: 0 15px;
+    }
+
+    .topbar-left {
+        gap: 10px;
+    }
+
+    .topbar-title {
+        font-size: 18px;
+    }
+
+    #btn-toggle-sidebar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: var(--text-muted);
+        cursor: pointer;
+    }
+}
+
+/* ==========================================================================
+   4. MENU LATERAL (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+    width: 70px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar:hover {
+    width: 250px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--sidebar-border);
+    height: 80px;
+}
+
+.logo i {
+    font-size: 24px;
+    min-width: 30px;
+    text-align: center;
+    color: var(--sidebar-logo-span);
+}
+
+.logo-text {
+    margin-left: 8px;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar:hover .logo-text {
+    opacity: 1;
+}
+
+.logo span {
+    color: var(--sidebar-logo-span);
+}
+
+.menu-container {
+    flex-grow: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.menu-container::-webkit-scrollbar {
+    display: none;
+}
+
+.titulo-categoria {
+    padding: 0 25px;
+    font-size: 11px;
+    color: var(--sidebar-category);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+    opacity: 0;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar:hover .titulo-categoria {
+    opacity: 1;
+}
+
+.categoria ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.categoria ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 23px;
+    text-decoration: none;
+    color: var(--sidebar-text);
+    font-size: 14px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.categoria ul li a i {
+    min-width: 24px;
+    font-size: 18px;
+    margin-right: 8px;
+    color: var(--sidebar-icon);
+    text-align: center;
+}
+
+.categoria ul li a span {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar:hover .categoria ul li a span {
+    opacity: 1;
+}
+
+.categoria ul li a:hover,
+.categoria ul li a.active {
+    background-color: var(--sidebar-hover);
+    border-left: 4px solid var(--sidebar-active-border);
+    padding-left: 19px;
+}
+
+.sidebar-footer {
+    padding: 10px 0;
+    border-top: 1px solid var(--sidebar-border);
+}
+
+.btn-sair {
+    text-decoration: none;
+    color: var(--sidebar-text);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 0;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.btn-sair i {
+    min-width: 24px;
+    font-size: 18px;
+    margin-right: 8px;
+    text-align: center;
+}
+
+.btn-sair span {
+    display: none;
+    opacity: 0;
+}
+
+.sidebar:hover .btn-sair span {
+    display: inline;
+    opacity: 1;
+}
+
+.btn-sair:hover {
+    background-color: var(--sidebar-hover);
+    color: var(--sidebar-logout-hover);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px;
+        width: 250px;
+    }
+
+    .sidebar.open {
+        left: 0;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.open .logo-text,
+    .sidebar.open .titulo-categoria,
+    .sidebar.open .categoria ul li a span {
+        opacity: 1;
+        display: inline;
+    }
+
+    .sidebar.open .btn-sair span {
+        display: inline;
+        opacity: 1;
+    }
+
+    .btn-sair {
+        justify-content: flex-start;
+        padding-left: 23px;
+    }
+}
+
+/* ==========================================================================
+   5. COMPONENTES COMUNS (BOTÕES, CHIPS, MODAIS, FORMULÁRIOS)
+   ========================================================================== */
+.nav-item {
+    position: relative;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--green-main);
+}
+
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-color);
+    padding: 5px 15px 5px 5px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chip-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--green-main);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.chip-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-hover);
+    width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    z-index: 200;
+    transform: translateY(10px);
+}
+
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-menu {
+    width: 220px;
+}
+
+.profile-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-header strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.profile-body {
+    padding: 15px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Modais */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s;
+    z-index: 2000;
+}
+
+.modal-overlay.open, .modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-box {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 550px;
+    border-radius: var(--r-lg);
+    padding: 25px;
+    transform: translateY(20px);
+    transition: 0.3s;
+}
+
+.modal-overlay.open .modal-box, .modal-overlay.active .modal-box {
+    transform: translateY(0);
+}
+
+.modal-head, .modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.modal-head h3, .modal-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-foot, .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-lg {
+    max-width: 800px;
+    padding: 0;
+}
+
+.modal-lg .modal-head {
+    padding: 20px 25px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+
+.config-layout {
+    display: flex;
+    min-height: 400px;
+}
+
+.config-nav {
+    width: 200px;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    padding: 15px 10px;
+}
+
+.config-tab {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.config-tab:hover {
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+}
+
+.config-tab.active {
+    background-color: var(--card-bg);
+    color: var(--green-main);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.config-content {
+    flex: 1;
+    padding: 25px;
+}
+
+.modal-lg .modal-foot {
+    padding: 15px 25px;
+    background-color: var(--bg-color);
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    margin: 0;
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-md);
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: var(--green-main);
+}
+
+textarea.form-control {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.urgency-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-urgency {
+    flex: 1;
+    padding: 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-md);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-urgency.active[data-val="Alta"] {
+    background: #fee2e2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+}
+
+.btn-urgency.active[data-val="Media"] {
+    background: #fefce8;
+    color: #b45309;
+    border-color: #fde047;
+}
+
+.btn-urgency.active[data-val="Baixa"] {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #86efac;
+}
+
+/* Botões Gerais */
+.btn-primary {
+    background: var(--green-main);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--r-md);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(27, 94, 32, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--green-hover);
+    box-shadow: 0 4px 6px rgba(27, 94, 32, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-ghost {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: var(--r-md);
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: 0.2s;
+}
+
+.btn-ghost:hover {
+    background-color: var(--bg-color);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--r-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c;
+}
+
+/* Badges padrão */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Toasts / Notificações */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: var(--green-main);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--r-md);
+    font-size: 14px;
+    font-weight: 500;
+    border-left: 4px solid var(--green-light);
+    animation: slideIn 0.3s forwards;
+    box-shadow: var(--shadow-hover);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes toastOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDADE DOS COMPONENTES
+   ========================================================================== */
+@media (max-width: 768px) {
+    .modal-box {
+        width: 95%;
+        max-width: 95%;
+        margin: 10px;
+        padding: 20px 15px;
+    }
+
+    .modal-lg {
+        padding: 0;
+    }
+
+    .config-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .config-nav {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        overflow-x: auto;
+        background-color: var(--bg-color);
+    }
+
+    .config-tab {
+        margin-bottom: 0;
+        white-space: nowrap;
+        width: auto;
+        padding: 8px 12px;
+    }
+
+    .config-content {
+        padding: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .urgency-buttons {
+        flex-wrap: wrap;
+    }
+}

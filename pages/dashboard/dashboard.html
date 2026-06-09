@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · Stock.tech</title>
+  
+  <!-- Fontes e Ícones Externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Estilos da Aplicação -->
+  <link rel="stylesheet" href="../../css/global.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  
+  <!-- Bibliotecas Externas -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Placeholders para Componentes Globais Injetados via JS -->
+  <div id="sidebar-container"></div>
+
+  <!-- Conteúdo Principal do Sistema (Wrapper) -->
+  <div class="main-wrapper" id="main-wrapper">
+    
+    <div id="topbar-container"></div>
+    <div id="modal-config-container"></div>
+
+    <!-- Área de Conteúdo da Página -->
+    <main class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>Visão Geral do Sistema</h1>
+          <p>Última atualização: <span id="hora-atualizacao">Agora mesmo</span></p>
+        </div>
+        <div class="header-actions">
+          <select class="form-control" id="filtro-dias" style="width: auto; cursor: pointer;">
+            <option value="7">Últimos 7 dias</option>
+            <option value="15">Últimos 15 dias</option>
+            <option value="30">Últimos 30 dias</option>
+            <option value="60">Últimos 60 dias</option>
+            <option value="90">Últimos 90 dias</option>
+          </select>
+
+          <button class="btn-ghost" id="btn-atualizar" title="Recarregar Dados">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid de Cartões de Métricas (KPIs) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon icon-blue"><i class="fa-solid fa-box"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Produtos Ativos <span class="kpi-dias-label">(7D)</span></div>
+            <div class="kpi-value" id="kpi-produtos">...</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon icon-purple"><i class="fa-solid fa-boxes-stacked"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Valor em Estoque <span class="kpi-dias-label">(7D)</span></div>
+            <div class="kpi-value" id="kpi-estoque">...</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon icon-green"><i class="fa-solid fa-cart-arrow-down"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Vendas <span class="kpi-dias-label">(7D)</span></div>
+            <div class="kpi-value" id="kpi-vendas">...</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon icon-amber"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Lucro <span class="kpi-dias-label">(7D)</span></div>
+            <div class="kpi-value" id="kpi-lucro">...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid com o Gráfico e Lista de Produtos -->
+      <div class="dashboard-grid">
+        <!-- Painel: Gráfico -->
+        <div class="card-painel chart-container">
+          <div class="card-header">
+            <h3>Movimentações de Estoque</h3>
+          </div>
+          <div class="card-body">
+            <canvas id="graficoMovimentacoes"></canvas>
+          </div>
+        </div>
+        <!-- Painel: Top Produtos -->
+        <div class="card-painel">
+          <div class="card-header">
+            <h3>Top Produtos</h3>
+          </div>
+          <div class="card-body">
+            <ul class="top-products-list" id="lista-top-produtos"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Notas e Lembretes Operacionais -->
+      <div class="notes-section mt-30">
+        <div class="notes-header">
+          <h3>Notas e Lembretes Operacionais</h3>
+          <div class="toolbar mt-10">
+            <div class="search-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control toolbar-search" id="input-busca" placeholder="Buscar notas..." autocomplete="off" />
+            </div>
+            <select class="form-control toolbar-filter" id="filter-urgencia" style="cursor: pointer;">
+              <option value="">Urgência (Todas)</option>
+              <option value="Alta">Alta</option>
+              <option value="Media">Média</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+            <button class="btn-primary btn-nova" id="btn-nova-nota">
+              Nova Nota <i class="fa-solid fa-plus" style="margin-left: 5px;"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Tabela de Notas -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable" data-sort="titulo">Título da Nota <i class="fa-solid fa-chevron-down sort-icon"></i></th>
+                <th class="sortable" data-sort="categoria">Categoria <i class="fa-solid fa-chevron-down sort-icon"></i></th>
+                <th class="sortable" data-sort="urgencia">Urgência <i class="fa-solid fa-chevron-down sort-icon"></i></th>
+                <th class="sortable" data-sort="status">Status <i class="fa-solid fa-chevron-down sort-icon"></i></th>
+                <th class="sortable" data-sort="data">Data <i class="fa-solid fa-chevron-down sort-icon"></i></th>
+                <th style="text-align: center;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="notas-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal de Criação / Edição de Notas -->
+  <div class="modal-overlay" id="modal-nota">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-titulo-txt">Nova Nota</h3>
+        <button class="modal-close" id="btn-fechar-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-nota">
+          <input type="hidden" id="nota-id" />
+          <div class="form-group">
+            <label class="form-label">Título</label>
+            <input type="text" class="form-control" id="f-titulo" required />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Categoria</label>
+              <select class="form-control" id="f-categoria" required>
+                <option value="">Selecione...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-control" id="f-status">
+                <option value="Pendente">Pendente</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Concluída">Concluída</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Nível de Urgência</label>
+            <div class="urgency-buttons">
+              <button type="button" class="btn-urgency" data-val="Alta">Alta</button>
+              <button type="button" class="btn-urgency" data-val="Media">Média</button>
+              <button type="button" class="btn-urgency active" data-val="Baixa">Baixa</button>
+            </div>
+            <input type="hidden" id="f-urgencia" value="Baixa" />
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-control" id="f-descricao" required></textarea>
+          </div>
+          
+          <div class="modal-foot">
+            <button type="button" class="btn-ghost" id="btn-cancelar">Cancelar</button>
+            <button type="submit" class="btn-primary" id="btn-salvar">Salvar Nota</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts JavaScript -->
+  <script src="../../js/global.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

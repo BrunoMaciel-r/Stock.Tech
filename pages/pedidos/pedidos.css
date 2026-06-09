@@ -1,0 +1,218 @@
+/* ==========================================================================
+   ESTILIZAÇÃO ESPECÍFICA DO MÓDULO DE PEDIDO DE VENDAS
+   ========================================================================== */
+
+.pedidos-layout {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.col-main {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (min-width: 1101px) {
+    .col-main {
+        min-width: 600px;
+    }
+}
+
+.col-side {
+    width: 320px;
+}
+
+@media (max-width: 1100px) {
+    .col-side {
+        width: 100%;
+    }
+}
+
+.actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-md);
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-box input:focus {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+}
+
+.filter-box select {
+    min-width: 180px;
+}
+
+.card-table {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.card-head {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-head h3 {
+    font-size: 18px;
+    color: var(--text-dark);
+}
+
+.table-vendas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table-vendas th {
+    text-align: left;
+    padding: 15px 25px;
+    background-color: var(--bg-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.table-vendas td {
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-dark);
+}
+
+.table-vendas tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+body[data-theme="dark"] .table-vendas tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.badge-concluido {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge-pendente {
+    background-color: #fef9c3;
+    color: #854d0e;
+}
+
+.badge-cancelado {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+body[data-theme="dark"] .badge-concluido { background-color: rgba(22, 101, 52, 0.2); color: #4ade80; }
+body[data-theme="dark"] .badge-pendente { background-color: rgba(133, 77, 14, 0.2); color: #facc15; }
+body[data-theme="dark"] .badge-cancelado { background-color: rgba(153, 27, 27, 0.2); color: #f87171; }
+
+.card-resumo {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--r-lg);
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.card-resumo h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.resumo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.resumo-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.resumo-item span {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.resumo-item strong {
+    color: var(--green-main);
+    font-size: 18px;
+}
+
+body[data-theme="dark"] .resumo-item strong {
+    color: var(--green-light);
+}
+
+.btn-delete, .btn-edit, .btn-view {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+    margin-right: 8px;
+}
+
+.btn-delete {
+    color: #ef4444;
+}
+
+.btn-delete:hover {
+    color: #b91c1c;
+    transform: scale(1.1);
+}
+
+.btn-edit {
+    color: #3b82f6;
+}
+
+.btn-edit:hover {
+    color: #1d4ed8;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+}

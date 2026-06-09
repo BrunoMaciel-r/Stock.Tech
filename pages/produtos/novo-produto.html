@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Produto · Stock.tech</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="produtos.css" />
+</head>
+<body>
+
+    <!-- Placeholders para Componentes Globais Injetados via JS -->
+    <div id="sidebar-container"></div>
+
+    <!-- Conteúdo Principal do Sistema (Wrapper) -->
+    <div class="main-wrapper" id="main-wrapper">
+
+        <div id="topbar-container"></div>
+        <div id="modal-config-container"></div>
+
+        <!-- FORMULÁRIO DE CADASTRO / EDIÇÃO -->
+        <main class="page-content">
+
+            <section class="form-wrapper" style="background: var(--card-bg); padding: 25px; border-radius: var(--r-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow);">
+
+                <a href="produtos.html" class="link-voltar" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--text-muted); font-size:14px; margin-bottom:20px; font-weight:500;">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar para produtos
+                </a>
+
+                <form id="formProduto" class="form-produto">
+                    <input type="hidden" id="produto-id" />
+                    
+                    <div class="form-topo" style="display:flex; gap:25px; margin-bottom:20px; flex-wrap:wrap;">
+                        <!-- Upload de imagem fake -->
+                        <div class="upload-imagem" style="display:flex; flex-direction:column; align-items:center;">
+                            <div class="upload-preview" id="uploadPreview" style="width:120px; height:120px; border-radius:12px; border:2px dashed var(--border-color); display:flex; align-items:center; justify-content:center; flex-direction:column; color:var(--text-muted); cursor:pointer; background:#fafafa; font-size:12px; transition:0.2s;">
+                                <i class="fa-solid fa-camera" style="font-size:24px; margin-bottom:5px;"></i>
+                                <span>Preview</span>
+                            </div>
+                        </div>
+
+                        <!-- Campos do topo -->
+                        <div class="form-campos-topo" style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:15px;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label for="nomeProduto" class="form-label">Nome do Produto *</label>
+                                <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do Produto" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label for="codigoProduto" class="form-label">Código do Produto *</label>
+                                    <input type="text" class="form-control" id="codigoProduto" placeholder="Código do Produto" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label for="precoCusto" class="form-label">Preço de Custo (R$) *</label>
+                                    <input type="number" class="form-control" id="precoCusto" step="0.01" min="0" placeholder="0,00" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label for="categoria" class="form-label">Categoria *</label>
+                                    <div class="categoria-wrap" style="display:flex; gap:8px;">
+                                        <select class="form-control" id="categoria" required>
+                                            <option value="">Selecione...</option>
+                                        </select>
+                                        <button type="button" id="btnNovaCategoria" class="btn-ghost" style="padding: 10px;" title="Criar nova categoria">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="nova-categoria-box" id="novaCategoriaBox" style="display:none; margin-top:10px; gap:8px;">
+                                        <input type="text" class="form-control" id="inputNovaCategoria" placeholder="Nome da nova categoria" style="flex:1;">
+                                        <button type="button" id="btnSalvarCategoria" class="btn-primary" style="padding: 10px;">Adicionar</button>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label for="unidade" class="form-label">Unidade</label>
+                                    <input type="text" class="form-control" id="unidade" placeholder="Ex: UN, KG, M">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campos inferiores -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="precoVenda" class="form-label">Preço de Venda (R$) *</label>
+                            <input type="number" class="form-control" id="precoVenda" step="0.01" min="0" placeholder="0,00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade" class="form-label">Quantidade Inicial *</label>
+                            <input type="number" class="form-control" id="quantidade" min="0" placeholder="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="descricao" rows="3" placeholder="Descrição do produto (exemplo: tamanho, cor, peso)"></textarea>
+                    </div>
+
+                    <div class="form-acoes" style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid var(--border-color); padding-top:20px; margin-top:20px;">
+                        <a href="produtos.html" class="btn-ghost" style="text-decoration:none;">Cancelar</a>
+                        <button type="submit" class="btn-primary">Salvar Produto</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../../js/global.js"></script>
+    <script src="produtos.js"></script>
+</body>
+</html>
