@@ -455,7 +455,7 @@ function atualizarNotificacoesEstoque() {
         }
     } else {
         if (badge) badge.style.display = "none";
-        list.innerHTML = `<li style="text-align: center; padding: 10px 0; color: var(--text-muted);">Nenhum alerta de estoque crítico no momento.</li>`;
+        list.innerHTML = `<li style="text-align: center; padding: 10px 0; color: var(--text-muted);">Nenhum alerta crítico no momento.</li>`;
     }
 
     
