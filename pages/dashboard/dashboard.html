@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard · Stock.tech</title>
   
-  <!-- Fontes e Ícones Externos -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
-  <!-- Estilos da Aplicação -->
+  
   <link rel="stylesheet" href="../../css/global.css" />
   <link rel="stylesheet" href="dashboard.css" />
   
-  <!-- Bibliotecas Externas -->
+  
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-  <!-- Placeholders para Componentes Globais Injetados via JS -->
+  
   <div id="sidebar-container"></div>
 
-  <!-- Conteúdo Principal do Sistema (Wrapper) -->
+  
   <div class="main-wrapper" id="main-wrapper">
     
     <div id="topbar-container"></div>
     <div id="modal-config-container"></div>
 
-    <!-- Área de Conteúdo da Página -->
+    
     <main class="page-content">
       <div class="page-header">
         <div>
@@ -49,7 +49,20 @@
         </div>
       </div>
 
-      <!-- Grid de Cartões de Métricas (KPIs) -->
+      
+      <div id="estoque-alerta-container" class="alert-section mb-15" style="display: none;">
+        <div class="alert-box-warning" style="background: #fff8f8; border: 1px solid #ffcccc; border-radius: var(--r-md); padding: 15px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px; color: #d32f2f; font-weight: 700;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 18px;"></i>
+            <span>Aviso de Estoque Crítico: Existem itens abaixo do estoque mínimo!</span>
+          </div>
+          <ul id="lista-estoque-critico" style="list-style: none; margin: 0; padding-left: 28px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #555;">
+             
+          </ul>
+        </div>
+      </div>
+
+      
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-icon icon-blue"><i class="fa-solid fa-box"></i></div>
@@ -81,9 +94,9 @@
         </div>
       </div>
 
-      <!-- Grid com o Gráfico e Lista de Produtos -->
+      
       <div class="dashboard-grid">
-        <!-- Painel: Gráfico -->
+        
         <div class="card-painel chart-container">
           <div class="card-header">
             <h3>Movimentações de Estoque</h3>
@@ -92,7 +105,7 @@
             <canvas id="graficoMovimentacoes"></canvas>
           </div>
         </div>
-        <!-- Painel: Top Produtos -->
+        
         <div class="card-painel">
           <div class="card-header">
             <h3>Top Produtos</h3>
@@ -103,7 +116,7 @@
         </div>
       </div>
 
-      <!-- Seção de Notas e Lembretes Operacionais -->
+      
       <div class="notes-section mt-30">
         <div class="notes-header">
           <h3>Notas e Lembretes Operacionais</h3>
@@ -124,7 +137,7 @@
           </div>
         </div>
         
-        <!-- Tabela de Notas -->
+        
         <div class="table-wrap">
           <table>
             <thead>
@@ -144,7 +157,7 @@
     </main>
   </div>
 
-  <!-- Modal de Criação / Edição de Notas -->
+  
   <div class="modal-overlay" id="modal-nota">
     <div class="modal-box">
       <div class="modal-head">
@@ -200,7 +213,7 @@
     </div>
   </div>
 
-  <!-- Scripts JavaScript -->
+  
   <script src="../../js/global.js"></script>
   <script src="dashboard.js"></script>
 </body>

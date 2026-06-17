@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. IMPORTAÇÕES EXTERNAS E CONFIGURAÇÕES BASE
-   ========================================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -20,7 +18,7 @@
     --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --font: 'Poppins', sans-serif;
 
-    /* Menu Lateral (Sidebar) */
+    
     --sidebar-bg: var(--green-main);
     --sidebar-hover: var(--green-hover);
     --sidebar-text: #ffffff;
@@ -31,7 +29,7 @@
     --sidebar-border: var(--green-hover);
     --sidebar-logout-hover: #ffcdd2;
 
-    /* Status e Feedback */
+    
     --success: #2e7d32;
     --danger: #d32f2f;
     --warning: #f57c00;
@@ -73,9 +71,7 @@ body {
     margin-top: 30px;
 }
 
-/* ==========================================================================
-   2. TEMA ESCURO (DARK MODE)
-   ========================================================================== */
+
 body[data-theme="dark"] {
     --bg-color: #0f172a;
     --card-bg: #1e293b;
@@ -83,7 +79,7 @@ body[data-theme="dark"] {
     --text-muted: #94a3b8;
     --border-color: #334155;
 
-    /* Menu Lateral (Dark Mode) */
+    
     --sidebar-bg: #1e293b;
     --sidebar-hover: #334155;
     --sidebar-text: #f8fafc;
@@ -95,9 +91,7 @@ body[data-theme="dark"] {
     --sidebar-logout-hover: #f87171;
 }
 
-/* ==========================================================================
-   3. ESTRUTURA E CABEÇALHO (LAYOUT)
-   ========================================================================== */
+
 .main-wrapper {
     margin-left: 70px;
     flex: 1;
@@ -174,9 +168,7 @@ body[data-theme="dark"] {
     }
 }
 
-/* ==========================================================================
-   4. MENU LATERAL (SIDEBAR)
-   ========================================================================== */
+
 .sidebar {
     width: 70px;
     height: 100vh;
@@ -379,9 +371,7 @@ body[data-theme="dark"] {
     }
 }
 
-/* ==========================================================================
-   5. COMPONENTES COMUNS (BOTÕES, CHIPS, MODAIS, FORMULÁRIOS)
-   ========================================================================== */
+
 .nav-item {
     position: relative;
 }
@@ -472,7 +462,7 @@ body[data-theme="dark"] {
     color: var(--text-muted);
 }
 
-/* Modais */
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -602,7 +592,7 @@ body[data-theme="dark"] {
     margin: 0;
 }
 
-/* Formulários */
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -679,7 +669,7 @@ textarea.form-control {
     border-color: #86efac;
 }
 
-/* Botões Gerais */
+
 .btn-primary {
     background: var(--green-main);
     color: white;
@@ -737,7 +727,7 @@ textarea.form-control {
     background-color: #b71c1c;
 }
 
-/* Badges padrão */
+
 .badge {
     display: inline-block;
     padding: 4px 8px;
@@ -746,7 +736,7 @@ textarea.form-control {
     font-weight: 600;
 }
 
-/* Toasts / Notificações */
+
 .toast-container {
     position: fixed;
     bottom: 20px;
@@ -790,9 +780,7 @@ textarea.form-control {
     }
 }
 
-/* ==========================================================================
-   6. RESPONSIVIDADE DOS COMPONENTES
-   ========================================================================== */
+
 @media (max-width: 768px) {
     .modal-box {
         width: 95%;

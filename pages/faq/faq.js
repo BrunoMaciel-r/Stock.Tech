@@ -1,6 +1,4 @@
-/**
- * faq.js — Lógica de perguntas frequentes, ticket de suporte e avaliações
- */
+
 
 "use strict";
 
@@ -13,9 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarAvaliacoes();
 });
 
-// --- CONTROLE DOS ARTIGOS DO FAQ ---
+
 function inicializarFaq() {
-    // Alternar ler mais/menos
+    
     document.querySelectorAll(".faq-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".faq-card");
@@ -29,7 +27,7 @@ function inicializarFaq() {
         });
     });
 
-    // Filtro de busca de artigos
+    
     const searchInput = document.getElementById("faqSearch");
     if (searchInput) {
         searchInput.addEventListener("input", () => {
@@ -47,10 +45,10 @@ function inicializarFaq() {
         });
     }
 
-    // Carregar mais artigos (simulação simples)
+    
     const toggleFaqBtn = document.getElementById("toggleFaq");
     if (toggleFaqBtn) {
-        // Inicialmente mostra 3 e esconde o resto
+        
         const cards = document.querySelectorAll(".faq-card");
         let mostrandoTodos = false;
 
@@ -59,7 +57,7 @@ function inicializarFaq() {
                 if (mostrandoTodos || index < 3) {
                     card.style.opacity = "1";
                     card.style.pointerEvents = "all";
-                    // Garante que não interfira com display none da busca
+                    
                     if (!searchInput.value) card.style.display = "flex"; 
                 } else {
                     card.style.opacity = "0";
@@ -83,7 +81,7 @@ function inicializarFaq() {
     }
 }
 
-// --- MODAL DE TICKET DE SUPORTE ---
+
 function inicializarTicket() {
     const modal = document.getElementById("ticketModal");
     const abrirBtn = document.getElementById("abrirTicket");
@@ -109,7 +107,7 @@ function inicializarTicket() {
     });
 }
 
-// --- GERENCIADOR DE AVALIAÇÕES (Opinião de Usuários) ---
+
 function inicializarAvaliacoes() {
     const listContainer = document.getElementById("listaAvaliacoes");
     const toggleFormBtn = document.getElementById("toggleFormulario");
@@ -121,7 +119,7 @@ function inicializarAvaliacoes() {
     const fFuncao = document.getElementById("aval-funcao");
     const fTexto = document.getElementById("aval-texto");
 
-    // Carrega dados iniciais do LocalStorage integrado
+    
     function carregarAvaliacoes() {
         const bd = window.lerBanco();
         avaliacoes = bd.avaliacoes || [];
@@ -158,7 +156,7 @@ function inicializarAvaliacoes() {
         });
     }
 
-    // Toggle formulário
+    
     toggleFormBtn?.addEventListener("click", () => {
         idAvalEdicao = null;
         fNome.value = "";
@@ -188,11 +186,11 @@ function inicializarAvaliacoes() {
         }
 
         if (idAvalEdicao !== null) {
-            // Edição
+            
             avaliacoes[idAvalEdicao] = { nome, funcao, avaliacao: texto };
             window.mostrarToast("Avaliação atualizada!");
         } else {
-            // Nova
+            
             avaliacoes.push({ nome, funcao, avaliacao: texto });
             window.mostrarToast("Avaliação enviada!");
         }
@@ -204,7 +202,7 @@ function inicializarAvaliacoes() {
         idAvalEdicao = null;
     });
 
-    // Expõe funções para edição/exclusão em nível global (usados nos onclicks dos cards)
+    
     window.editarAvaliacao = function(index) {
         const av = avaliacoes[index];
         if (!av) return;
@@ -227,6 +225,6 @@ function inicializarAvaliacoes() {
         }
     };
 
-    // Inicialização
+    
     carregarAvaliacoes();
 }

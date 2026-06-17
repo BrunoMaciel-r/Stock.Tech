@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessar — Stock.Tech</title>
+    <link rel="stylesheet" href="../../css/landing.css">
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <a href="../../index.html" class="nav-logo" style="justify-content: center; margin-bottom: 1.5rem; text-decoration: none; display: flex; font-weight: 800; font-size: 1.5rem; color: #0f0f0f;">Stock<span style="color: #00C44C;">.Tech</span></a>
+        
+        <h2 id="login-title" style="text-align: center; margin-bottom: 2rem;">Acessar Painel</h2>
+        
+        
+        <form id="login-form">
+            <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">E-mail</label>
+                <input type="email" id="email" placeholder="admin@admin.com" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">Senha</label>
+                <input type="password" id="senha" placeholder="123" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+            
+            <button type="submit" class="btn-green" style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 1rem;">Entrar</button>
+            
+            <p style="text-align: center; font-size: 0.85rem; color: #666;">
+                Não tem uma conta? <a href="#" id="link-ir-cadastro" style="color: #00C44C; font-weight: 700; text-decoration: none;">Cadastre-se</a>
+            </p>
+        </form>
+
+        
+        <form id="register-form" style="display: none; flex-direction: column;">
+            <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">Nome Completo</label>
+                <input type="text" id="reg-nome" placeholder="Seu nome completo" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">E-mail</label>
+                <input type="email" id="reg-email" placeholder="exemplo@email.com" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">Senha</label>
+                <input type="password" id="reg-senha" placeholder="Escolha uma senha" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+            
+            <button type="submit" class="btn-green" style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 1rem;">Cadastrar</button>
+            
+            <p style="text-align: center; font-size: 0.85rem; color: #666;">
+                Já tem uma conta? <a href="#" id="link-ir-login" style="color: #00C44C; font-weight: 700; text-decoration: none;">Entre</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

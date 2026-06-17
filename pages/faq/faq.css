@@ -1,6 +1,4 @@
-/* ==========================================================================
-   ESTILIZAÇÃO ESPECÍFICA DO MÓDULO DE FAQ (SUPORTE E AVALIAÇÕES)
-   ========================================================================== */
+
 
 .faq-search {
     display: flex;
@@ -40,7 +38,7 @@
     font-size: 14px;
 }
 
-/* Grid de Artigos */
+
 .faq-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -83,7 +81,7 @@
     line-height: 1.6;
 }
 
-/* FAQ Extra Expandível */
+
 .faq-extra {
     max-height: 0;
     overflow: hidden;
@@ -111,7 +109,7 @@
     color: var(--text-muted);
 }
 
-/* Seção de Avaliações */
+
 .lista-avaliacoes {
     display: grid;
     grid-template-columns: 1fr;

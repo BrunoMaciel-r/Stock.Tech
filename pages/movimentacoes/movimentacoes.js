@@ -1,6 +1,4 @@
-/**
- * movimentacoes.js — Lógica do módulo de Movimentações de Estoque
- */
+
 
 "use strict";
 
@@ -79,7 +77,7 @@ function renderizarCards(lista) {
         return;
     }
 
-    // Ordena do mais recente para o mais antigo por padrão
+    
     const listaOrdenada = [...lista].sort((a, b) => (b.data || '').localeCompare(a.data || ''));
 
     listaOrdenada.forEach(item => {
@@ -158,7 +156,7 @@ function abrirModalNova() {
     limparFormulario();
     document.getElementById("tituloModalMov").innerText = "Nova Movimentação";
     
-    // Define a data atual como padrão
+    
     movData.value = new Date().toISOString().split('T')[0];
     
     modalMov.classList.add("open");
@@ -201,9 +199,9 @@ function salvarMovimentacao() {
     } else {
         movimentacoes.push(dados);
         
-        // --- Atualiza opcionalmente o saldo financeiro criando um lançamento ---
-        // Aqui integramos opcionalmente com o módulo de vendas/financeiro do Bruno
-        // Por exemplo, podemos descontar das despesas ou somar na receita
+        
+        
+        
         
         window.mostrarToast("Movimentação registrada!");
     }

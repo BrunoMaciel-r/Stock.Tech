@@ -1,6 +1,4 @@
-/**
- * contatos.js — Lógica de contatos integrada com fallback offline (LocalStorage)
- */
+
 
 "use strict";
 
@@ -47,13 +45,13 @@ function configurarEventos() {
 
 async function carregarContatos() {
     try {
-        // Tenta buscar da API local (json-server)
+        
         const resposta = await fetch(apiEndpoint, { signal: AbortSignal.timeout(1000) });
         if (!resposta.ok) throw new Error("Erro na API");
         contatos = await resposta.json();
         console.log("Contatos carregados da API remota.");
     } catch (erro) {
-        // Fallback: carrega do localStorage
+        
         console.warn("API offline. Carregando contatos do LocalStorage.");
         const bd = window.lerBanco();
         contatos = bd.contatos || [];
@@ -66,11 +64,11 @@ function renderizarGrade(lista) {
     listaDiv.innerHTML = "";
 
     if (lista.length === 0) {
-        return; // O CSS cuidará do :empty
+        return; 
     }
 
     lista.forEach(c => {
-        // Extrai iniciais para o avatar
+        
         const partesNome = c.nome.trim().split(" ");
         const iniciais = partesNome.length >= 2 
             ? (partesNome[0][0] + partesNome[1][0]).toUpperCase()
@@ -130,10 +128,10 @@ async function salvarContato(e) {
     const contato = { nome, telefone, email };
 
     if (idEdicao) {
-        // Modo Edição
+        
         contato.id = idEdicao;
         
-        // 1. Tenta atualizar na API
+        
         try {
             const resposta = await fetch(`${apiEndpoint}/${idEdicao}`, {
                 method: "PUT",
@@ -144,7 +142,7 @@ async function salvarContato(e) {
             if (!resposta.ok) throw new Error("Erro API");
             window.mostrarToast("Contato editado via API!");
         } catch (erro) {
-            // Atualiza localmente
+            
             const idx = contatos.findIndex(c => String(c.id) === String(idEdicao));
             if (idx !== -1) contatos[idx] = contato;
             
@@ -154,11 +152,11 @@ async function salvarContato(e) {
             window.mostrarToast("Contato editado localmente!");
         }
     } else {
-        // Modo Criação
+        
         const novoId = Date.now().toString();
         contato.id = novoId;
 
-        // 1. Tenta salvar na API
+        
         try {
             const resposta = await fetch(apiEndpoint, {
                 method: "POST",
@@ -169,7 +167,7 @@ async function salvarContato(e) {
             if (!resposta.ok) throw new Error("Erro API");
             window.mostrarToast("Contato salvo via API!");
         } catch (erro) {
-            // Salva localmente
+            
             contatos.push(contato);
             const bd = window.lerBanco();
             bd.contatos = contatos;
@@ -197,7 +195,7 @@ window.editarContato = function(id) {
 
 window.excluirContato = async function(id) {
     if (confirm("Tem certeza que deseja excluir este contato?")) {
-        // 1. Tenta remover na API
+        
         try {
             const resposta = await fetch(`${apiEndpoint}/${id}`, {
                 method: "DELETE",
@@ -206,7 +204,7 @@ window.excluirContato = async function(id) {
             if (!resposta.ok) throw new Error("Erro API");
             window.mostrarToast("Contato excluído via API!");
         } catch (erro) {
-            // Remove localmente
+            
             contatos = contatos.filter(c => String(c.id) !== String(id));
             const bd = window.lerBanco();
             bd.contatos = contatos;

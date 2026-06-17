@@ -1,6 +1,4 @@
-/* ==========================================================================
-   ESTILIZAÇÃO ESPECÍFICA DO MÓDULO DE CONTATOS (PREMIUM)
-   ========================================================================== */
+
 
 .contatos-container {
     width: 100%;
@@ -13,7 +11,7 @@
     margin-top: 25px;
 }
 
-/* Card de Contato */
+
 .contato-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -33,7 +31,7 @@
     box-shadow: var(--shadow-hover);
 }
 
-/* Avatar com Iniciais */
+
 .contato-avatar {
     width: 64px;
     height: 64px;
@@ -49,7 +47,7 @@
     box-shadow: inset 0 0 0 2px rgba(27, 94, 32, 0.1);
 }
 
-/* Variação de cores de avatar para dar riqueza visual */
+
 .contato-card:nth-child(2n) .contato-avatar {
     background-color: #ffe2e2;
     color: #e53935;
@@ -146,7 +144,7 @@ body[data-theme="dark"] .contato-item i {
     background-color: #ffcdd2;
 }
 
-/* Estado vazio */
+
 .contatos-grid:empty::before {
     content: 'Nenhum contato cadastrado. Clique em "+ Novo Contato" para registrar.';
     grid-column: 1 / -1;

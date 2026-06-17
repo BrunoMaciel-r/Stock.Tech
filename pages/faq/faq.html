@@ -8,24 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
+    
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="faq.css" />
 </head>
 <body>
 
-    <!-- Placeholders para Componentes Globais Injetados via JS -->
+    
     <div id="sidebar-container"></div>
 
-    <!-- Conteúdo Principal do Sistema (Wrapper) -->
+    
     <div class="main-wrapper" id="main-wrapper">
 
         <div id="topbar-container"></div>
         <div id="modal-config-container"></div>
 
-        <!-- PÁGINA -->
+        
         <main class="page-content">
-            <!-- PESQUISA E TICKET -->
+            
             <div class="faq-search">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,14 +36,14 @@
                 </button>
             </div>
 
-            <!-- TÍTULO -->
+            
             <div class="faq-header" style="margin: 30px 0 20px 0;">
                 <h2>Perguntas Frequentes (Artigos)</h2>
             </div>
 
-            <!-- CARDS DE ARTIGOS -->
+            
             <div class="faq-grid" id="faqGrid">
-                <!-- CARD 1 -->
+                
                 <div class="faq-card" data-titulo="como adicionar um novo produto ao estoque">
                     <div class="faq-content">
                         <h3>1. Como adicionar um novo produto ao estoque?</h3>
@@ -61,7 +61,7 @@
                     <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
                 </div>
 
-                <!-- CARD 2 -->
+                
                 <div class="faq-card" data-titulo="como editar as informacoes de um produto">
                     <div class="faq-content">
                         <h3>2. Como editar as informações de um produto?</h3>
@@ -79,7 +79,7 @@
                     <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
                 </div>
 
-                <!-- CARD 3 -->
+                
                 <div class="faq-card" data-titulo="por que nao aparecem informacoes no dashboard">
                     <div class="faq-content">
                         <h3>3. Por que não aparecem informações no dashboard?</h3>
@@ -95,7 +95,7 @@
                     <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
                 </div>
 
-                <!-- CARD 4 -->
+                
                 <div class="faq-card" data-titulo="como remover um produto do estoque">
                     <div class="faq-content">
                         <h3>4. Como remover um produto do estoque?</h3>
@@ -112,7 +112,7 @@
                     <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
                 </div>
 
-                <!-- CARD 5 -->
+                
                 <div class="faq-card" data-titulo="como funciona o controle de estoque">
                     <div class="faq-content">
                         <h3>5. Como funciona o controle de estoque?</h3>
@@ -129,7 +129,7 @@
                     <button class="btn-ghost faq-btn" style="padding:6px 12px; font-size:12px; margin-top:10px;">Ler mais</button>
                 </div>
 
-                <!-- CARD 6 -->
+                
                 <div class="faq-card" data-titulo="como alterar o tema do sistema dark mode">
                     <div class="faq-content">
                         <h3>6. Como alterar o tema do sistema para Dark Mode?</h3>
@@ -147,19 +147,19 @@
                 </div>
             </div>
 
-            <!-- BOTÃO MOSTRAR / ESCONDER -->
+            
             <div class="faq-load-more" style="text-align:center; margin-top:20px;">
                 <button id="toggleFaq" class="btn-ghost" style="padding: 10px 24px; font-weight:600;">Carregar mais artigos</button>
             </div>
 
-            <!-- SEÇÃO DE AVALIAÇÕES -->
+            
             <section class="avaliacoes-section" style="margin-top:40px; background:var(--card-bg); padding:25px; border-radius:var(--r-lg); border:1px solid var(--border-color); box-shadow:var(--shadow);">
                 <div class="avaliacoes-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:20px;">
                     <h2 class="avaliacoes-title" style="font-size:18px; color:var(--text-dark);">Opinião de Usuários</h2>
                     <button id="toggleFormulario" class="btn-primary"><i class="fa-solid fa-pen-nib"></i> Fazer Avaliação</button>
                 </div>
 
-                <!-- FORMULÁRIO (OCULTO POR PADRÃO) -->
+                
                 <div class="avaliacao-form hidden-form" id="formularioAvaliacao" style="display:none; border-top:1px solid var(--border-color); padding-top:20px; margin-bottom:20px; animation: modalIn 0.3s ease;">
                     <h3 style="font-size:15px; font-weight:600; margin-bottom:15px; color:var(--text-dark);">Nova Avaliação</h3>
                     <div class="form-row">
@@ -182,15 +182,15 @@
                     </div>
                 </div>
 
-                <!-- LISTA DE AVALIAÇÕES -->
+                
                 <div id="listaAvaliacoes" class="lista-avaliacoes" style="display:flex; flex-direction:column; gap:15px;">
-                    <!-- Preenchido via JS -->
+                    
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- MODAL TICKET -->
+    
     <div class="modal-overlay" id="ticketModal">
         <div class="modal-box" style="max-width: 480px;">
             <div class="modal-head">
@@ -222,7 +222,7 @@
         </div>
     </div>
 
-    <!-- Scripts JavaScript -->
+    
     <script src="../../js/global.js"></script>
     <script src="faq.js"></script>
 </body>

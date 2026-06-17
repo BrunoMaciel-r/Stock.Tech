@@ -1,6 +1,4 @@
-/**
- * dashboard.js — Lógica comportamental e de dados do Dashboard
- */
+
 
 "use strict";
 
@@ -12,21 +10,21 @@ let ordenacaoDirecao = "desc";
 
 const $ = id => document.getElementById(id);
 
-// Configuração inicial ao carregar a página
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Carrega categorias no formulário
+    
     carregarCategorias();
     
-    // Configura cliques nos cabeçalhos da tabela para ordenação
+    
     configurarOrdenacao(); 
     
-    // Carrega notas do LocalStorage
+    
     buscarNotasBancoLocal();
     
-    // Inicializa todos os componentes do Dashboard
+    
     carregarDashboard(); 
 
-    // Configura o filtro de dias
+    
     const filtroDias = $("filtro-dias");
     if (filtroDias) {
         filtroDias.addEventListener("change", (e) => {
@@ -38,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Configura o botão de atualizar
+    
     const btnAtualizar = $("btn-atualizar");
     if (btnAtualizar) {
         btnAtualizar.addEventListener("click", () => {
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Filtros de busca dinâmica e urgência nas notas
+    
     const inputBusca = $("input-busca");
     if (inputBusca) {
         inputBusca.addEventListener("input", aplicarFiltrosERenderizar);
@@ -59,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         filterUrgencia.addEventListener("change", aplicarFiltrosERenderizar);
     }
 
-    // Salvamento de notas
+    
     const formNota = $("form-nota");
     if (formNota) {
         formNota.addEventListener("submit", function (e) {
@@ -83,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 bd.notas[index] = dadosFormulario; 
             } else {
                 dadosFormulario.id = Date.now().toString(); 
-                bd.notes = bd.notes || []; // Garante existência
+                bd.notes = bd.notes || []; 
                 bd.notas.push(dadosFormulario); 
             }
 
@@ -94,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Configuração do formulário de urgência
+    
     document.querySelectorAll('.btn-urgency').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.btn-urgency').forEach(b => b.classList.remove('active'));
@@ -107,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Abrir modal de nota
+    
     const btnNovaNota = $("btn-nova-nota");
     if (btnNovaNota) {
         btnNovaNota.addEventListener("click", () => {
@@ -116,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Fechar modal de nota
+    
     const btnFecharModal = $("btn-fechar-modal");
     if (btnFecharModal) {
         btnFecharModal.addEventListener("click", fecharModal);
@@ -136,16 +134,19 @@ function carregarDashboard() {
     const filtroDiasElement = $("filtro-dias");
     const diasSelecionados = filtroDiasElement ? parseInt(filtroDiasElement.value) : 7;
 
-    // Renderiza KPIs
+    
     renderizarKPIs(bd.produtos, bd.vendas);
     
-    // Top produtos mais vendidos
+    
     renderizarTopProdutos(bd.produtos);
     
-    // Gráfico de movimentações
+    
     renderizarGrafico(bd.movimentacoesGrafico, diasSelecionados);
 
-    // Atualiza a hora da última atualização
+    
+    verificarEstoqueCritico(bd.produtos);
+
+    
     const agora = new Date();
     const horaAtualizacao = $("hora-atualizacao");
     if (horaAtualizacao) {
@@ -434,5 +435,28 @@ function fecharModal() {
     const fUrgencia = $("f-urgencia");
     if (fUrgencia) {
         fUrgencia.value = "Baixa";
+    }
+}
+
+function verificarEstoqueCritico(produtos) {
+    const container = $("estoque-alerta-container");
+    const lista = $("lista-estoque-critico");
+    if (!container || !lista) return;
+
+    
+    const criticos = (produtos || []).filter(p => {
+        const min = typeof p.estoqueMinimo !== 'undefined' ? Number(p.estoqueMinimo) : 0;
+        return Number(p.quantidade) <= min;
+    });
+
+    if (criticos.length > 0) {
+        lista.innerHTML = "";
+        criticos.forEach(p => {
+            const min = typeof p.estoqueMinimo !== 'undefined' ? p.estoqueMinimo : 0;
+            lista.innerHTML += `<li>O produto <strong>${p.nome}</strong> está com apenas <strong>${p.quantidade} un.</strong> em estoque (mínimo exigido: ${min} un.).</li>`;
+        });
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
     }
 }

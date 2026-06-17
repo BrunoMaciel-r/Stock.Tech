@@ -1,6 +1,4 @@
-/**
- * produtos.js — Lógica compartilhada entre a listagem de produtos e o formulário de cadastro/edição
- */
+
 
 "use strict";
 
@@ -14,13 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// --- LÓGICA DA TELA DE LISTAGEM DE PRODUTOS ---
+
 function iniciarListagemProdutos() {
     const grid = document.getElementById("produtosGrid");
     const filtroChips = document.getElementById("filtroChips");
     let filtroAtivo = "todos";
 
-    // 1. Renderiza os chips de categorias do DB
+    
     const bd = window.lerBanco();
     const categorias = bd.categorias || [];
     
@@ -32,10 +30,10 @@ function iniciarListagemProdutos() {
         filtroChips.appendChild(span);
     });
 
-    // 2. Renderiza produtos iniciais
+    
     renderizarProdutos(bd.produtos || [], filtroAtivo);
 
-    // 3. Adiciona eventos aos chips de filtragem
+    
     document.querySelectorAll(".chip").forEach(chip => {
         chip.addEventListener("click", () => {
             document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
@@ -47,7 +45,7 @@ function iniciarListagemProdutos() {
         });
     });
 
-    // Função interna para renderizar cards
+    
     function renderizarProdutos(lista, categoriaFiltro) {
         grid.innerHTML = "";
 
@@ -56,7 +54,7 @@ function iniciarListagemProdutos() {
             : lista.filter(p => p.categoria === categoriaFiltro);
 
         if (filtrados.length === 0) {
-            return; // Irá disparar o seletor :empty no CSS mostrando mensagem limpa
+            return; 
         }
 
         const coresPlaceholder = ["placeholder-rosa", "placeholder-amarelo", "placeholder-azul", "placeholder-roxo", "placeholder-verde", "placeholder-laranja"];
@@ -85,7 +83,7 @@ function iniciarListagemProdutos() {
                 </div>
             `;
 
-            // Configura os botões de ações
+            
             card.querySelector(".btn-editar").addEventListener("click", () => {
                 window.location.href = `novo-produto.html?id=${prod.id}`;
             });
@@ -106,12 +104,12 @@ function iniciarListagemProdutos() {
         window.salvarBanco(bdAtual);
         window.mostrarToast("Produto excluído com sucesso!");
         
-        // Recarrega listagem
+        
         renderizarProdutos(bdAtual.produtos, filtroAtivo);
     }
 }
 
-// --- LÓGICA DA TELA DE FORMULÁRIO (CADASTRO / EDIÇÃO) ---
+
 function iniciarFormularioProduto() {
     const form = document.getElementById("formProduto");
     const selectCat = document.getElementById("categoria");
@@ -126,10 +124,11 @@ function iniciarFormularioProduto() {
     const inputCusto = document.getElementById("precoCusto");
     const inputVenda = document.getElementById("precoVenda");
     const inputQuantidade = document.getElementById("quantidade");
+    const inputEstoqueMinimo = document.getElementById("estoqueMinimo");
     const inputUnidade = document.getElementById("unidade");
     const inputDescricao = document.getElementById("descricao");
 
-    // 1. Preenche o select de categorias
+    
     function carregarSelectCategorias(selecionar = "") {
         const bd = window.lerBanco();
         selectCat.innerHTML = '<option value="">Selecione...</option>';
@@ -143,7 +142,7 @@ function iniciarFormularioProduto() {
     }
     carregarSelectCategorias();
 
-    // 2. Controla exibição de criação de novas categorias
+    
     btnNovaCat.addEventListener("click", () => {
         novaCatBox.style.display = novaCatBox.style.display === "none" || novaCatBox.style.display === "" 
             ? "flex" 
@@ -174,7 +173,7 @@ function iniciarFormularioProduto() {
         window.mostrarToast("Categoria criada!");
     });
 
-    // 3. Verifica se é edição (lendo parâmetro na URL ?id=ID)
+    
     const urlParams = new URLSearchParams(window.location.search);
     const prodId = urlParams.get("id");
 
@@ -190,6 +189,9 @@ function iniciarFormularioProduto() {
             inputCusto.value = produto.precoCusto || "";
             inputVenda.value = produto.preco || "";
             inputQuantidade.value = produto.quantidade || "0";
+            if (inputEstoqueMinimo) {
+                inputEstoqueMinimo.value = typeof produto.estoqueMinimo !== 'undefined' ? produto.estoqueMinimo : "0";
+            }
             inputUnidade.value = produto.unidade || "UN";
             inputDescricao.value = produto.descricao || "";
             
@@ -197,7 +199,7 @@ function iniciarFormularioProduto() {
         }
     }
 
-    // 4. Salva produto
+    
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -211,6 +213,7 @@ function iniciarFormularioProduto() {
             precoCusto: parseFloat(inputCusto.value),
             preco: parseFloat(inputVenda.value),
             quantidade: parseInt(inputQuantidade.value),
+            estoqueMinimo: inputEstoqueMinimo ? parseInt(inputEstoqueMinimo.value) || 0 : 0,
             categoria: selectCat.value,
             unidade: inputUnidade.value.trim() || "UN",
             descricao: inputDescricao.value.trim(),
@@ -218,15 +221,15 @@ function iniciarFormularioProduto() {
         };
 
         if (idVal) {
-            // Edição
+            
             const idx = bd.produtos.findIndex(p => String(p.id) === String(idVal));
             if (idx !== -1) bd.produtos[idx] = dados;
         } else {
-            // Cadastro
+            
             bd.produtos.push(dados);
         }
 
-        // --- Adiciona automaticamente a movimentação ---
+        
         const descMov = idVal ? "Edição de informações do produto" : "Estoque inicial do produto cadastrado";
         bd.movimentacoes = bd.movimentacoes || [];
         bd.movimentacoes.push({
@@ -242,7 +245,7 @@ function iniciarFormularioProduto() {
         window.salvarBanco(bd);
         window.mostrarToast(idVal ? "Produto editado com sucesso!" : "Produto cadastrado com sucesso!");
 
-        // Redireciona para listagem após o toast
+        
         setTimeout(() => {
             window.location.href = "produtos.html";
         }, 800);

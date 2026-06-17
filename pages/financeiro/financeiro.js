@@ -1,10 +1,8 @@
-/**
- * financeiro.js — Lógica comportamental e integração de dados do módulo Financeiro
- */
+
 
 "use strict";
 
-// --- Configuração das Chaves no DB Integrado ---
+
 const DB_KEYS = {
   CONTAS_PAGAR:  'contasPagar',
   MOVIMENTACOES: 'movimentacoes',
@@ -13,7 +11,7 @@ const DB_KEYS = {
   VENDAS:        'vendas'
 };
 
-// --- Objeto de Banco de Dados Integrado ---
+
 const db = {
   getAll(key) {
     const bd = window.lerBanco();
@@ -48,14 +46,14 @@ const db = {
   }
 };
 
-// --- Estado local ---
+
 let contasPag = 1;
 const CONTAS_PER_PAGE = 5;
 let editingContaId = null;
 let chartInstance = null;
 let searchTerm = '';
 
-// --- Inicialização ---
+
 document.addEventListener('DOMContentLoaded', () => {
   renderSummaryCards();
   renderContasList();
@@ -65,31 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
   bindEvents();
 });
 
-// --- Bind de eventos ---
+
 function bindEvents() {
-  // Abrir modal de contas
+  
   document.getElementById('btn-open-contas').addEventListener('click', () => openModalContas());
   document.getElementById('btn-nova-conta').addEventListener('click', () => openFormConta());
 
-  // Fechar modais
+  
   document.getElementById('close-modal-contas').addEventListener('click', () => closeModal('modal-contas'));
   document.getElementById('close-form-conta').addEventListener('click', () => closeModal('modal-form-conta'));
   document.getElementById('cancel-form-conta').addEventListener('click', () => closeModal('modal-form-conta'));
 
-  // Salvar conta
+  
   document.getElementById('save-conta').addEventListener('click', saveConta);
 
-  // Paginação de contas
+  
   document.getElementById('contas-prev').addEventListener('click', () => { contasPag--; renderContasTable(); });
   document.getElementById('contas-next').addEventListener('click', () => { contasPag++; renderContasTable(); });
 
-  // Busca na tabela de movimentações
+  
   document.getElementById('search-movimentacoes').addEventListener('input', (e) => {
     searchTerm = e.target.value.toLowerCase();
     renderMovimentacoesTable();
   });
 
-  // Fechar modal ao clicar fora
+  
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) overlay.classList.remove('active');
@@ -97,17 +95,17 @@ function bindEvents() {
   });
 }
 
-// --- Cards de Resumo ---
+
 function calcTotais() {
   const movs = db.getAll(DB_KEYS.MOVIMENTACOES);
   const contas = db.getAll(DB_KEYS.CONTAS_PAGAR);
 
-  // Receita = entradas de movimentações
+  
   const receita = movs
     .filter(m => m.tipo.toLowerCase() === 'entrada')
     .reduce((s, m) => s + (parseFloat(m.valor) || 0), 0);
 
-  // Despesas = saídas/vendas de movimentações + contas a pagar pendentes
+  
   const saidasMov = movs
     .filter(m => m.tipo.toLowerCase() === 'saida' || m.tipo.toLowerCase() === 'venda')
     .reduce((s, m) => s + (parseFloat(m.valor) || 0), 0);
@@ -143,17 +141,17 @@ function renderSummaryCards() {
   }
 }
 
-// --- Gráfico de Fluxo de Caixa ---
+
 function renderChart() {
   const movs = db.getAll(DB_KEYS.MOVIMENTACOES);
   const canvas = document.getElementById('cashflow-chart');
   if (!canvas) return;
 
-  // Agrupa por mês/dia
+  
   const meses = {};
   movs.forEach(m => {
     if (!m.data) return;
-    // Pega o dia e mês da movimentação (YYYY-MM-DD -> MM-DD)
+    
     const parts = m.data.split('-');
     const key = parts.length >= 2 ? `${parts[1]}/${parts[2] || '01'}` : m.data;
     
@@ -165,7 +163,7 @@ function renderChart() {
     }
   });
 
-  const sortedKeys = Object.keys(meses).sort().slice(-10); // pega últimas 10 datas
+  const sortedKeys = Object.keys(meses).sort().slice(-10); 
   const labels = sortedKeys;
 
   let saldo = 0;
@@ -243,7 +241,7 @@ function renderChart() {
   });
 }
 
-// --- Lista de Contas a Pagar na Lateral ---
+
 function renderContasList() {
   const contas = db.getAll(DB_KEYS.CONTAS_PAGAR).filter(c => !c.pago);
   const container = document.getElementById('contas-list');
@@ -268,7 +266,7 @@ function renderContasList() {
   }).join('') + (contas.length > 4 ? `<div style="text-align:center;font-size:11px;color:var(--text-muted);padding-top:5px;">+ ${contas.length - 4} pendentes</div>` : '');
 }
 
-// --- Modal Contas a Pagar ---
+
 function openModalContas() {
   contasPag = 1;
   renderContasTable();
@@ -314,7 +312,7 @@ function renderContasTable() {
   document.getElementById('contas-next').disabled = contasPag >= totalPags;
 }
 
-// --- Formulário de Conta ---
+
 window.openFormConta = function(id = null) {
   editingContaId = id;
   const form = document.getElementById('form-conta');
@@ -382,7 +380,7 @@ window.excluirConta = function(id) {
   }
 };
 
-// --- Tabela de Movimentações ---
+
 function renderMovimentacoesTable() {
   let movs = db.getAll(DB_KEYS.MOVIMENTACOES)
     .sort((a, b) => (b.data || '').localeCompare(a.data || ''));
@@ -417,7 +415,7 @@ function renderMovimentacoesTable() {
       }).join('');
 }
 
-// --- Alertas ---
+
 function renderAlertas() {
   const contas = db.getAll(DB_KEYS.CONTAS_PAGAR).filter(c => !c.pago);
   const vencendo = contas.filter(c => diasParaVencer(c.vencimento) <= 7);
@@ -447,7 +445,7 @@ function renderAlertas() {
     `;
   }
 
-  // Meta mensal de faturamento (meta fictícia de R$ 15.000)
+  
   const meta = 15000;
   const { receita } = calcTotais();
   const pct = Math.min(100, Math.round((receita / meta) * 100));
@@ -469,7 +467,7 @@ function renderAlertas() {
   container.innerHTML = html;
 }
 
-// --- Utilitários ---
+
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
 }

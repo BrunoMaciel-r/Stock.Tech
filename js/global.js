@@ -1,9 +1,17 @@
-/**
- * global.js — Script global compartilhado entre todas as páginas
- * Gerencia a injeção do menu lateral, topbar, configurações e banco de dados
- */
+
 
 "use strict";
+
+
+(function verificarAutenticacao() {
+    const path = window.location.pathname.toLowerCase();
+    
+    if (path.includes('/pages/') && !path.includes('/login/')) {
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = "../login/login.html";
+        }
+    }
+})();
 
 const DADOS_INICIAIS = {
     categorias: [
@@ -22,7 +30,7 @@ const DADOS_INICIAIS = {
     avaliacoes: []
 };
 
-// --- Funções do Banco de Dados ---
+
 window.iniciarBancoDeDados = function() {
     if (!localStorage.getItem("stockTechDB")) {
         localStorage.setItem("stockTechDB", JSON.stringify(DADOS_INICIAIS));
@@ -38,13 +46,13 @@ window.salvarBanco = function(dados) {
     localStorage.setItem("stockTechDB", JSON.stringify(dados));
 };
 
-// --- Injeção Dinâmica de Componentes ---
+
 function injetarSidebar() {
     const container = document.getElementById("sidebar-container");
     if (!container) return;
 
-    // A sidebar tem links relativos ao nível atual de pasta (/pages/funcionalidade/funcionalidade.html)
-    // Se estivermos na raiz (/index.html), seria diferente, mas como redirecionamos para as páginas de /pages, todos os links serão relativos à pasta /pages/
+    
+    
     container.outerHTML = `
     <!-- Overlay para Responsividade do Menu Lateral -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
@@ -93,7 +101,7 @@ function injetarSidebar() {
     </nav>
     `;
 
-    // Marcar link ativo na sidebar
+    
     const path = window.location.pathname.toLowerCase();
     if (path.includes("/dashboard/")) {
         document.getElementById("link-dashboard")?.classList.add("active");
@@ -117,7 +125,7 @@ function injetarTopbar(titulo = "") {
     if (!container) return;
 
     if (!titulo) {
-        // Tenta inferir pelo título da página
+        
         titulo = document.title.split("·")[0].trim();
     }
 
@@ -131,6 +139,22 @@ function injetarTopbar(titulo = "") {
       </div>
       
       <div class="topbar-right">
+        <!-- Notificações (Sininho) -->
+        <div class="nav-item has-dropdown notification-dropdown-wrap">
+          <button class="icon-btn" id="btn-notifications" title="Notificações" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span id="notification-badge" style="display: none; position: absolute; top: -5px; right: -5px; background: #d32f2f; color: white; border-radius: 50%; font-size: 10px; font-weight: bold; width: 16px; height: 16px; align-items: center; justify-content: center;">0</span>
+          </button>
+          <div class="dropdown-menu notification-menu" id="notification-menu" style="width: 300px; padding: 15px; border-radius: var(--r-md); box-shadow: var(--shadow-hover); position: absolute; top: 120%; right: 0; background-color: var(--card-bg); border: 1px solid var(--border-color); opacity: 0; visibility: hidden; transition: 0.2s; z-index: 200; transform: translateY(10px);">
+             <div style="font-weight: 700; font-size: 14px; margin-bottom: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; color: var(--text-dark); text-align: left;">
+                Alertas do Sistema
+             </div>
+             <ul id="notification-list" style="list-style: none; padding: 0; margin: 0; max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-muted); text-align: left;">
+                <li>Sem novos alertas.</li>
+             </ul>
+          </div>
+        </div>
+
         <div class="nav-item">
           <button class="icon-btn" id="btn-config" title="Configurações">
             <i class="fa-solid fa-gear"></i>
@@ -222,7 +246,7 @@ function injetarModalConfig() {
     `;
 }
 
-// --- Comportamentos Comuns ---
+
 window.aplicarConfiguracoesIniciais = function() {
     const nome = localStorage.getItem("st_nome") || "Administrador Geral";
     const email = localStorage.getItem("st_email") || "admin@stocktech.com";
@@ -289,20 +313,20 @@ window.mostrarToast = function(msg, tipo = "success") {
     }, 3000); 
 };
 
-// Inicialização Geral no DOMContentLoaded
+
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Inicializa o DB
+    
     window.iniciarBancoDeDados();
 
-    // 2. Injeta componentes comuns
+    
     injetarSidebar();
     injetarTopbar();
     injetarModalConfig();
 
-    // 3. Aplica perfil e tema
+    
     window.aplicarConfiguracoesIniciais();
 
-    // 4. Configura listeners de eventos da barra lateral e config
+    
     const btnToggle = document.getElementById("btn-toggle-sidebar");
     const overlay = document.getElementById("sidebar-overlay");
     const sidebar = document.getElementById("sidebar");
@@ -354,7 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Configuração de abas no modal de configurações
+    
     document.querySelectorAll('.config-tab').forEach(botao => {
         botao.addEventListener('click', () => {
             document.querySelectorAll('.config-tab').forEach(b => b.classList.remove('active'));
@@ -376,10 +400,76 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             if (confirm("Deseja realmente desconectar?")) {
                 window.mostrarToast("Desconectando...");
+                sessionStorage.removeItem('isLoggedIn');
                 setTimeout(() => {
-                    alert("Desconectado com sucesso (plataforma demonstrativa).");
+                    window.location.href = "../login/login.html";
                 }, 500);
             }
         });
     }
+
+    
+    atualizarNotificacoesEstoque();
 });
+
+function atualizarNotificacoesEstoque() {
+    const bd = window.lerBanco();
+    const produtos = bd.produtos || [];
+    
+    
+    const criticos = produtos.filter(p => {
+        const min = typeof p.estoqueMinimo !== 'undefined' ? Number(p.estoqueMinimo) : 0;
+        return Number(p.quantidade) <= min;
+    });
+
+    const badge = document.getElementById("notification-badge");
+    const list = document.getElementById("notification-list");
+    const menuNotif = document.getElementById("notification-menu");
+
+    if (!list) return;
+
+    if (criticos.length > 0) {
+        if (badge) {
+            badge.innerText = criticos.length;
+            badge.style.display = "inline-flex";
+        }
+
+        list.innerHTML = "";
+        criticos.forEach(p => {
+            const min = typeof p.estoqueMinimo !== 'undefined' ? p.estoqueMinimo : 0;
+            list.innerHTML += `
+                <li style="border-bottom: 1px solid var(--border-color); padding-bottom: 6px; display: flex; gap: 6px; flex-direction: column;">
+                   <span style="color: #d32f2f; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-circle-exclamation"></i> Estoque Crítico
+                   </span> 
+                   <span>O produto <strong>${p.nome}</strong> está com apenas <strong>${p.quantidade} un.</strong> no estoque (mínimo de ${min} un.).</span>
+                </li>`;
+        });
+
+        
+        if (!sessionStorage.getItem("alertaEstoqueToastExibido")) {
+            setTimeout(() => {
+                window.mostrarToast(`Atenção: Existem ${criticos.length} produto(s) com estoque crítico!`, "warning");
+                sessionStorage.setItem("alertaEstoqueToastExibido", "true");
+            }, 1000);
+        }
+    } else {
+        if (badge) badge.style.display = "none";
+        list.innerHTML = `<li style="text-align: center; padding: 10px 0; color: var(--text-muted);">Nenhum alerta de estoque crítico no momento.</li>`;
+    }
+
+    
+    const wrap = document.querySelector(".notification-dropdown-wrap");
+    if (wrap && menuNotif) {
+        wrap.addEventListener("mouseenter", () => {
+            menuNotif.style.opacity = "1";
+            menuNotif.style.visibility = "visible";
+            menuNotif.style.transform = "translateY(0)";
+        });
+        wrap.addEventListener("mouseleave", () => {
+            menuNotif.style.opacity = "0";
+            menuNotif.style.visibility = "hidden";
+            menuNotif.style.transform = "translateY(10px)";
+        });
+    }
+}

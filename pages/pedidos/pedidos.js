@@ -1,6 +1,4 @@
-/**
- * pedidos.js — Lógica comportamental e de dados do módulo Comercial (Pedido de Vendas)
- */
+
 
 "use strict";
 
@@ -78,7 +76,7 @@ function renderizarTabela() {
         return;
     }
 
-    // Ordena pelo id mais recente (decrescente)
+    
     filtradas.sort((a, b) => b.id.localeCompare(a.id));
 
     filtradas.forEach(v => {
@@ -127,21 +125,21 @@ function salvarVenda(e) {
     }
 
     if (idEdicao) {
-        // Editar
+        
         const idx = vendas.findIndex(v => String(v.id) === String(idEdicao));
         if (idx !== -1) {
             vendas[idx] = {
                 ...vendas[idx],
                 cliente,
                 valorTotal: valor,
-                lucro: valor * 0.25, // Lucro aproximado de 25%
+                lucro: valor * 0.25, 
                 pagamento,
                 status
             };
             window.mostrarToast("Pedido de venda atualizado!");
         }
     } else {
-        // Criar novo
+        
         const novoId = (vendas.length + 1).toString();
         const novaVenda = {
             id: novoId,
@@ -154,7 +152,7 @@ function salvarVenda(e) {
         };
         vendas.push(novaVenda);
 
-        // --- Adiciona no DB unificado a movimentação de estoque/financeira correspondente ---
+        
         const bd = window.lerBanco();
         bd.movimentacoes = bd.movimentacoes || [];
         bd.movimentacoes.push({
@@ -167,7 +165,7 @@ function salvarVenda(e) {
             descricao: `Pedido #${novoId} registrado via Comercial`
         });
 
-        // Adiciona à lista de métricas de vendas do gráfico principal
+        
         bd.movimentacoesGrafico = bd.movimentacoesGrafico || [];
         const dataDia = new Date().toLocaleDateString("pt-BR", {day: "2-digit", month: "2-digit"});
         const diaExistente = bd.movimentacoesGrafico.find(m => m.data === dataDia);
