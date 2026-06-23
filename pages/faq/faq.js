@@ -217,12 +217,12 @@ function inicializarAvaliacoes() {
     };
 
     window.excluirAvaliacao = function(index) {
-        if (confirm("Tem certeza que deseja excluir sua avaliação?")) {
+        window.confirmarExclusao("Essa ação removerá sua avaliação permanentemente.", function () {
             avaliacoes.splice(index, 1);
             salvarAvaliacoes();
             carregarAvaliacoes();
             window.mostrarToast("Avaliação removida!");
-        }
+        });
     };
 
     

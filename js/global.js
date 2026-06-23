@@ -441,6 +441,54 @@ window.mostrarToast = function (msg, tipo = "success") {
     }, 3000);
 };
 
+// ═══════════════════════════════════════════════
+//  Modal Global de Confirmação de Exclusão
+// ═══════════════════════════════════════════════
+window.confirmarExclusao = function (mensagem, onConfirmar) {
+    let overlay = document.getElementById('modal-global-excluir');
+
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.id = 'modal-global-excluir';
+        overlay.innerHTML = `
+            <div class="modal-box modal-confirmacao" style="max-width:400px; text-align:center;">
+                <div class="confirmacao-content" style="padding: 10px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 40px; color: var(--danger); margin-bottom:15px;"></i>
+                    <h3>Deseja realmente excluir?</h3>
+                    <p id="global-excluir-msg" style="color:var(--text-muted); font-size:13px; margin: 10px 0 20px 0;"></p>
+                    <div class="confirmacao-botoes" style="display:flex; justify-content:center; gap:10px;">
+                        <button class="btn-ghost" id="global-cancelar-excluir">Cancelar</button>
+                        <button class="btn-danger" id="global-confirmar-excluir">Sim, Excluir</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        document.getElementById('global-cancelar-excluir').addEventListener('click', function () {
+            overlay.classList.remove('open');
+        });
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) overlay.classList.remove('open');
+        });
+    }
+
+    document.getElementById('global-excluir-msg').textContent = mensagem || 'Essa ação não poderá ser desfeita.';
+
+    var btnConfirmar = document.getElementById('global-confirmar-excluir');
+    var novoBtnConfirmar = btnConfirmar.cloneNode(true);
+    btnConfirmar.parentNode.replaceChild(novoBtnConfirmar, btnConfirmar);
+
+    novoBtnConfirmar.addEventListener('click', function () {
+        overlay.classList.remove('open');
+        if (typeof onConfirmar === 'function') onConfirmar();
+    });
+
+    overlay.classList.add('open');
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // Carrega Lucide Icons dinamicamente
@@ -573,7 +621,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnSair) {
         btnSair.addEventListener("click", (e) => {
             e.preventDefault();
-            if (confirm("Deseja realmente desconectar?")) {
+            window.confirmarExclusao("Deseja realmente desconectar do sistema?", function () {
                 window.mostrarToast("Desconectando...");
                 sessionStorage.removeItem('isLoggedIn');
                 localStorage.removeItem('st_plano');
@@ -581,10 +629,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.removeItem('st_email');
                 localStorage.removeItem('st_cargo');
                 localStorage.removeItem('st_orgId');
-                setTimeout(() => {
+                setTimeout(function () {
                     window.location.href = "../login/login.html";
                 }, 500);
-            }
+            });
         });
     }
 
@@ -654,13 +702,13 @@ window.mudarCargoUsuario = function (email, novoCargo) {
 };
 
 window.removerUsuario = function (email) {
-    if (confirm('Remover este usuário do sistema?')) {
+    window.confirmarExclusao('Essa ação removerá o usuário permanentemente do sistema.', function () {
         let usuarios = JSON.parse(localStorage.getItem('stockTechUsers') || '[]');
         usuarios = usuarios.filter(u => u.email !== email);
         localStorage.setItem('stockTechUsers', JSON.stringify(usuarios));
         window.mostrarToast('Usuário removido.');
         if (window.renderizarListaUsuarios) window.renderizarListaUsuarios();
-    }
+    });
 };
 
 function atualizarNotificacoesEstoque() {

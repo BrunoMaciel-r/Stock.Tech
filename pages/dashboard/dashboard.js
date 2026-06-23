@@ -412,13 +412,13 @@ window.editarNota = function (id) {
 };
 
 window.excluirNota = function (id) {
-    if (confirm("Deseja realmente excluir esta nota?")) {
+    window.confirmarExclusao("Essa ação não poderá ser desfeita.", function () {
         const bd = window.lerBanco();
         bd.notas = bd.notas.filter(n => String(n.id) !== String(id)); 
         window.salvarBanco(bd); 
         window.mostrarToast("Nota excluída com sucesso.");
         buscarNotasBancoLocal(); 
-    }
+    });
 };
 
 function fecharModal() {

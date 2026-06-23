@@ -305,7 +305,7 @@ window.editarVenda = function(id) {
 };
 
 window.excluirVenda = function(id) {
-    if (confirm("Tem certeza que deseja remover este registro de venda? O estoque será devolvido.")) {
+    window.confirmarExclusao("Essa ação removerá o registro de venda e o estoque será devolvido.", function () {
         const venda = vendas.find(v => String(v.id) === String(id));
         vendas = vendas.filter(v => String(v.id) !== String(id));
         
@@ -324,5 +324,5 @@ window.excluirVenda = function(id) {
         salvarDados();
         carregarDados();
         window.mostrarToast("Pedido removido e estoque devolvido!");
-    }
+    });
 };

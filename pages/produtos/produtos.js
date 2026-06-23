@@ -89,9 +89,9 @@ function iniciarListagemProdutos() {
             });
 
             card.querySelector(".btn-excluir").addEventListener("click", () => {
-                if (confirm(`Deseja realmente excluir o produto "${prod.nome}"?`)) {
+                window.confirmarExclusao(`Essa ação removerá o produto "${prod.nome}" permanentemente.`, function () {
                     excluirProduto(prod.id);
-                }
+                });
             });
 
             grid.appendChild(card);

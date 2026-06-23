@@ -290,11 +290,12 @@ window.togglePago=function(id){
 };
 window.deleteConta=function(id){
   const bd=getBD();const c=bd.contasPagar.find(x=>x.id===id);if(!c)return;
-  if(!confirm(`Excluir "${c.nome}"?`))return;
-  bd.contasPagar=bd.contasPagar.filter(x=>x.id!==id);
-  bd.movimentacoes=(bd.movimentacoes||[]).filter(m=>m.refConta!==id);
-  window.salvarBanco(bd);renderAll();
-  window.mostrarToast('Conta excluída.','warning');
+  window.confirmarExclusao(`Essa ação removerá a conta "${c.nome}" permanentemente.`, function(){
+    bd.contasPagar=bd.contasPagar.filter(x=>x.id!==id);
+    bd.movimentacoes=(bd.movimentacoes||[]).filter(m=>m.refConta!==id);
+    window.salvarBanco(bd);renderAll();
+    window.mostrarToast('Conta excluída.','warning');
+  });
 };
 
 /* ── Form Conta ───────────────────────────────────────────── */
@@ -422,7 +423,8 @@ function saveMeta(){
 
 window.deleteMeta=function(id){
   const bd=getBD();const m=(bd.metas||[]).find(x=>x.id===id);if(!m)return;
-  if(!confirm(`Excluir "${m.nome}"?`))return;
-  bd.metas=bd.metas.filter(x=>x.id!==id);window.salvarBanco(bd);renderMetas();
-  window.mostrarToast('Meta removida.','warning');
+  window.confirmarExclusao(`Essa ação removerá a meta "${m.nome}" permanentemente.`, function(){
+    bd.metas=bd.metas.filter(x=>x.id!==id);window.salvarBanco(bd);renderMetas();
+    window.mostrarToast('Meta removida.','warning');
+  });
 };

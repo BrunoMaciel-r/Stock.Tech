@@ -194,8 +194,7 @@ window.editarContato = function(id) {
 };
 
 window.excluirContato = async function(id) {
-    if (confirm("Tem certeza que deseja excluir este contato?")) {
-        
+    window.confirmarExclusao("Essa ação removerá o contato permanentemente.", async function () {
         try {
             const resposta = await fetch(`${apiEndpoint}/${id}`, {
                 method: "DELETE",
@@ -204,7 +203,6 @@ window.excluirContato = async function(id) {
             if (!resposta.ok) throw new Error("Erro API");
             window.mostrarToast("Contato excluído via API!");
         } catch (erro) {
-            
             contatos = contatos.filter(c => String(c.id) !== String(id));
             const bd = window.lerBanco();
             bd.contatos = contatos;
@@ -213,5 +211,5 @@ window.excluirContato = async function(id) {
         }
 
         carregarContatos();
-    }
+    });
 };

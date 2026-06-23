@@ -13,9 +13,7 @@ const fecharModalMov = document.getElementById("fecharModalMov");
 const cancelarMov = document.getElementById("cancelarMov");
 const salvarMov = document.getElementById("salvarMov");
 
-const modalExcluir = document.getElementById("modalExcluir");
-const confirmarExcluir = document.getElementById("confirmarExcluir");
-const cancelarExcluir = document.getElementById("cancelarExcluir");
+
 
 const movId = document.getElementById("movId");
 const movNome = document.getElementById("movNome");
@@ -26,7 +24,7 @@ const movData = document.getElementById("movData");
 const movDescricao = document.getElementById("movDescricao");
 
 let movimentacoes = [];
-let idExcluir = null;
+
 
 document.addEventListener("DOMContentLoaded", iniciarSistema);
 
@@ -57,12 +55,7 @@ function iniciarEventos() {
     cancelarMov.addEventListener("click", fecharModalMovimentacao);
     salvarMov.addEventListener("click", salvarMovimentacao);
 
-    cancelarExcluir.addEventListener("click", () => {
-        modalExcluir.classList.remove("open");
-        idExcluir = null;
-    });
 
-    confirmarExcluir.addEventListener("click", excluirMovimentacao);
 }
 
 function renderizarCards(lista) {
@@ -114,7 +107,7 @@ function renderizarCards(lista) {
         `;
 
         card.querySelector(".btn-editar").addEventListener("click", () => editarMovimentacao(item.id));
-        card.querySelector(".btn-excluir").addEventListener("click", () => abrirModalExcluir(item.id));
+        card.querySelector(".btn-excluir").addEventListener("click", () => excluirMovimentacao(item.id));
 
         container.appendChild(card);
     });
@@ -229,20 +222,14 @@ function editarMovimentacao(id) {
     modalMov.classList.add("open");
 }
 
-function abrirModalExcluir(id) {
-    idExcluir = id;
-    modalExcluir.classList.add("open");
-}
-
-function excluirMovimentacao() {
-    movimentacoes = movimentacoes.filter(item => String(item.id) !== String(idExcluir));
-
-    salvarDadosLocal();
-    carregarDadosLocal();
-    renderizarCards(movimentacoes);
-    modalExcluir.classList.remove("open");
-    window.mostrarToast("Movimentação removida!");
-    idExcluir = null;
+function excluirMovimentacao(id) {
+    window.confirmarExclusao("Essa ação não poderá ser desfeita e afetará o saldo financeiro do sistema.", function () {
+        movimentacoes = movimentacoes.filter(item => String(item.id) !== String(id));
+        salvarDadosLocal();
+        carregarDadosLocal();
+        renderizarCards(movimentacoes);
+        window.mostrarToast("Movimentação removida!");
+    });
 }
 
 function limparFormulario() {
