@@ -4,88 +4,120 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Financeiro · Stock.tech</title>
-  
-  
+  <meta name="description" content="Dashboard financeiro completo com contas a pagar, fluxo de caixa e movimentações." />
+
+  <!-- Fontes e ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  
+
+  <!-- Estilos globais + local -->
   <link rel="stylesheet" href="../../css/global.css" />
   <link rel="stylesheet" href="financeiro.css" />
-  
-  
+
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-  
+  <!-- Sidebar global -->
   <div id="sidebar-container"></div>
 
-  
+  <!-- Área principal -->
   <div class="main-wrapper" id="main-wrapper">
-    
+    <!-- Topbar global -->
     <div id="topbar-container"></div>
     <div id="modal-config-container"></div>
 
-    
     <main class="page-content">
-      
-      <div class="summary-cards" id="summary-cards">
-        <div class="summary-card">
-          <div class="card-icon">
-            <i class="fa-solid fa-wallet"></i>
+
+      <!-- Cards de Resumo -->
+      <div class="fin-summary-cards">
+        <div class="fin-summary-card">
+          <div class="fin-card-icon fin-icon-green">
+            <i class="fa-solid fa-money-bill-wave"></i>
           </div>
-          <div class="card-body">
-            <div class="card-label">Receita</div>
-            <div class="card-value" id="card-receita">R$ 0,00</div>
-          </div>
-        </div>
-        <div class="summary-card">
-          <div class="card-icon icon-danger">
-            <i class="fa-solid fa-money-bill-transfer"></i>
-          </div>
-          <div class="card-body">
-            <div class="card-label">Despesas</div>
-            <div class="card-value" id="card-despesas">R$ 0,00</div>
+          <div class="fin-card-body">
+            <div class="fin-card-label">Receita</div>
+            <div class="fin-card-value" id="card-receita">R$ 0,00</div>
+            <div class="fin-card-change up" id="card-receita-pct"></div>
           </div>
         </div>
-        <div class="summary-card">
-          <div class="card-icon icon-info">
-            <i class="fa-solid fa-scale-balanced"></i>
+        <div class="fin-summary-card">
+          <div class="fin-card-icon fin-icon-red">
+            <i class="fa-solid fa-arrow-trend-down"></i>
           </div>
-          <div class="card-body">
-            <div class="card-label">Lucro Líquido</div>
-            <div class="card-value" id="card-lucro">R$ 0,00</div>
-            <div class="card-change" id="card-lucro-pct"></div>
+          <div class="fin-card-body">
+            <div class="fin-card-label">Despesas</div>
+            <div class="fin-card-value" id="card-despesas">R$ 0,00</div>
+            <div class="fin-card-change down" id="card-despesas-pct"></div>
+          </div>
+        </div>
+        <div class="fin-summary-card">
+          <div class="fin-card-icon fin-icon-blue">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="fin-card-body">
+            <div class="fin-card-label">Lucro Líquido</div>
+            <div class="fin-card-value" id="card-lucro">R$ 0,00</div>
+            <div class="fin-card-change" id="card-lucro-pct"></div>
           </div>
         </div>
       </div>
 
-      
-      <div class="dashboard-grid">
+      <!-- Grid Principal -->
+      <div class="fin-dashboard-grid">
 
-        
-        <div class="dashboard-left">
+        <!-- Coluna Esquerda -->
+        <div class="fin-dashboard-left">
 
-          
-          <div class="panel">
-            <div class="panel-header">
-              <span class="panel-title">Fluxo de Caixa</span>
+          <!-- Gráfico Fluxo de Caixa -->
+          <div class="card-painel">
+            <div class="card-header">
+              <h3>Fluxo de Caixa</h3>
             </div>
-            <div class="panel-body">
-              <div class="chart-container">
+            <div class="card-body">
+              <div class="fin-chart-container">
                 <canvas id="cashflow-chart"></canvas>
               </div>
             </div>
           </div>
 
-          
-          <div class="panel mov-panel">
-            <div class="panel-header">
-              <span class="panel-title">Movimentações Financeiras</span>
-              <div class="search-input-wrapper">
+          <!-- Contas a Pagar -->
+          <div class="card-painel">
+            <div class="card-header">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <h3>Contas a Pagar</h3>
+                <span class="fin-contas-total" id="contas-inline-total"></span>
+              </div>
+              <button class="btn-primary" id="btn-open-contas" style="font-size:13px;padding:8px 14px;">
+                <i class="fa-solid fa-plus"></i> Nova Conta
+              </button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th style="text-align:center;">Vencimento</th>
+                    <th style="text-align:center;">Dias</th>
+                    <th style="text-align:center;">Situação</th>
+                    <th style="text-align:right;"></th>
+                  </tr>
+                </thead>
+                <tbody id="contas-inline-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tabela de Movimentações -->
+          <div class="card-painel">
+            <div class="card-header">
+              <h3>Movimentações Financeiras</h3>
+              <div class="search-wrap">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="form-control" style="padding-left: 30px;" id="search-movimentacoes" placeholder="Buscar movimentação..." />
+                <input type="text" class="form-control toolbar-search" id="search-movimentacoes" placeholder="Buscar movimentação..." autocomplete="off" />
               </div>
             </div>
             <div class="table-wrap">
@@ -95,7 +127,7 @@
                     <th>Data</th>
                     <th>Tipo</th>
                     <th>Descrição</th>
-                    <th style="text-align: right;">Valor</th>
+                    <th style="text-align:right;">Valor</th>
                   </tr>
                 </thead>
                 <tbody id="mov-tbody"></tbody>
@@ -103,54 +135,60 @@
             </div>
           </div>
 
-        </div>
+        </div><!-- /coluna esquerda -->
 
-        
-        <div class="dashboard-right">
+        <!-- Coluna Direita -->
+        <div class="fin-dashboard-right">
 
-          
-          <div class="panel">
-            <div class="panel-header">
-              <span class="panel-title">Contas a Pagar</span>
-              <button class="btn-primary btn-sm" id="btn-open-contas">Gerenciar</button>
+          <!-- Alertas -->
+          <div class="card-painel">
+            <div class="card-header">
+              <h3>Alertas</h3>
+              <i class="fa-solid fa-bell" style="color:var(--text-muted);"></i>
             </div>
-            <div class="panel-body" style="padding-top:8px;">
-              <div class="contas-list" id="contas-list">
-                <div class="empty-state">Sem contas</div>
-              </div>
+            <div class="card-body" id="alertas-body">
+              <p style="text-align:center;color:var(--text-muted);padding:20px 0;">Sem alertas</p>
             </div>
           </div>
 
-          
-          <div class="panel alertas-panel">
-            <div class="panel-header">
-              <span class="panel-title">Alertas</span>
-              <span style="color:var(--text-muted);"><i class="fa-solid fa-bell"></i></span>
+          <!-- Metas -->
+          <div class="card-painel">
+            <div class="card-header">
+              <h3>Metas</h3>
+              <button class="btn-primary" id="btn-nova-meta" style="font-size:13px;padding:8px 14px;">
+                <i class="fa-solid fa-plus"></i> Meta
+              </button>
             </div>
-            <div class="panel-body" id="alertas-body">
-              <div class="empty-state">Sem alertas</div>
+            <div class="card-body" id="metas-body" style="padding:12px 16px;">
+              <p style="text-align:center;color:var(--text-muted);padding:20px 0;">Nenhuma meta definida</p>
             </div>
           </div>
 
-        </div>
-      </div>
+        </div><!-- /coluna direita -->
+      </div><!-- /dashboard-grid -->
+
     </main>
   </div>
 
-  
+  <!-- ═══════════════════════════════════════════════════════
+       Modal: Contas a Pagar (CRUD)
+  ═══════════════════════════════════════════════════════ -->
   <div class="modal-overlay" id="modal-contas">
-    <div class="modal-box" style="max-width:700px;">
+    <div class="modal-box" style="max-width:720px;">
       <div class="modal-head">
-        <h2>Gerenciamento de Contas a Pagar</h2>
+        <h3>Contas a Pagar</h3>
         <button class="modal-close" id="close-modal-contas"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="modal-body">
-        <button class="btn-primary" id="btn-nova-conta" style="margin-bottom:14px;">+ Nova Conta</button>
+      <div class="modal-body" style="overflow-y:auto;">
+        <button class="btn-primary" id="btn-nova-conta" style="margin-bottom:14px;">
+          <i class="fa-solid fa-plus"></i> Nova Conta
+        </button>
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>Categoria</th>
                 <th>Valor</th>
                 <th>Vencimento</th>
                 <th>Status</th>
@@ -161,50 +199,46 @@
           </table>
         </div>
       </div>
-      <div class="pagination" id="contas-pagination" style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; padding-top:15px; border-top: 1px solid var(--border-color);">
-        <span class="pagination-info" id="contas-pag-info" style="font-size:13px; color:var(--text-muted);">0 Contas</span>
-        <div>
-          <button class="btn-ghost" id="contas-prev" style="padding: 5px 12px; font-size:12px;">Anterior</button>
-          <span class="page-current" id="contas-pag-num" style="margin: 0 10px; font-weight:600;">1</span>
-          <button class="btn-ghost" id="contas-next" style="padding: 5px 12px; font-size:12px;">Próximo</button>
-        </div>
+      <div class="modal-foot">
+        <span id="contas-pag-info" style="flex:1;font-size:12px;color:var(--text-muted);">0 Contas</span>
       </div>
     </div>
   </div>
 
-  
+  <!-- ═══════════════════════════════════════════════════════
+       Modal: Formulário de Conta (criar/editar)
+  ═══════════════════════════════════════════════════════ -->
   <div class="modal-overlay" id="modal-form-conta">
-    <div class="modal-box" style="max-width:480px;">
+    <div class="modal-box" style="max-width:440px;">
       <div class="modal-head">
-        <h2 id="form-conta-title">Nova Conta</h2>
+        <h3 id="form-conta-title">Nova Conta</h3>
         <button class="modal-close" id="close-form-conta"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-body">
         <form id="form-conta" novalidate>
           <input type="hidden" id="conta-id" />
           <div class="form-group">
-            <label for="conta-nome" class="form-label">Nome da Conta *</label>
+            <label class="form-label" for="conta-nome">Nome da Conta *</label>
             <input type="text" class="form-control" id="conta-nome" placeholder="Ex: Aluguel, Energia..." required />
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="conta-valor" class="form-label">Valor (R$) *</label>
+              <label class="form-label" for="conta-valor">Valor (R$) *</label>
               <input type="number" class="form-control" id="conta-valor" step="0.01" min="0" placeholder="0,00" required />
             </div>
             <div class="form-group">
-              <label for="conta-vencimento" class="form-label">Vencimento *</label>
+              <label class="form-label" for="conta-vencimento">Vencimento *</label>
               <input type="date" class="form-control" id="conta-vencimento" required />
             </div>
           </div>
           <div class="form-group">
-            <label for="conta-categoria" class="form-label">Categoria</label>
-            <select class="form-control" id="conta-categoria">
-              <option value="">Selecione...</option>
-            </select>
+            <label class="form-label">Categoria</label>
+            <div class="fin-cat-grid" id="cat-grid"></div>
           </div>
-          <div class="form-group" style="display:flex; align-items:center; gap:8px; margin-top:15px;">
-            <input type="checkbox" id="conta-pago" style="width:18px; height:18px;" />
-            <label for="conta-pago" class="form-label" style="margin-bottom:0; cursor:pointer;">Marcar como pago</label>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="conta-pago" /> Marcar como pago
+            </label>
           </div>
         </form>
       </div>
@@ -215,7 +249,64 @@
     </div>
   </div>
 
-  
+  <!-- ═══════════════════════════════════════════════════════
+       Modal: Formulário de Meta
+  ═══════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-form-meta">
+    <div class="modal-box" style="max-width:440px;">
+      <div class="modal-head">
+        <h3 id="form-meta-title">Nova Meta</h3>
+        <button class="modal-close" id="close-form-meta"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-meta" novalidate>
+          <input type="hidden" id="meta-id" />
+          <div class="form-group">
+            <label class="form-label" for="meta-nome">Nome da Meta *</label>
+            <input type="text" class="form-control" id="meta-nome" placeholder="Ex: Meta de Lucro, Vendas do mês..." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="meta-tipo">Tipo / Fonte de Dados *</label>
+            <select class="form-control" id="meta-tipo" onchange="onMetaTipoChange()">
+              <option value="lucro">💰 Lucro Líquido (automático)</option>
+              <option value="receita">📈 Receita (automático)</option>
+              <option value="despesas">📉 Redução de Despesas (automático)</option>
+              <option value="movimentacoes">🔄 Qtd. de Movimentações (automático)</option>
+              <option value="estoque">📦 Estoque Vendido (manual)</option>
+              <option value="manual">✏️ Personalizado / Manual</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="meta-valor">Valor da Meta *</label>
+            <input type="number" class="form-control" id="meta-valor" step="0.01" min="0" placeholder="Ex: 10000" required />
+          </div>
+          <div class="form-group" id="meta-atual-group" style="display:none;">
+            <label class="form-label" for="meta-atual">Valor Atual (progresso)</label>
+            <input type="number" class="form-control" id="meta-atual" step="0.01" min="0" placeholder="Ex: 3500" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cor do Indicador</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;" id="meta-cor-grid">
+              <button type="button" class="fin-meta-cor-btn fin-meta-cor-active" data-cor="#1b5e20" style="background:#1b5e20;" onclick="selectMetaCor(this,'#1b5e20')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#1976d2" style="background:#1976d2;" onclick="selectMetaCor(this,'#1976d2')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#7b1fa2" style="background:#7b1fa2;" onclick="selectMetaCor(this,'#7b1fa2')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#fb8c00" style="background:#fb8c00;" onclick="selectMetaCor(this,'#fb8c00')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#e53935" style="background:#e53935;" onclick="selectMetaCor(this,'#e53935')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#00695c" style="background:#00695c;" onclick="selectMetaCor(this,'#00695c')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#455a64" style="background:#455a64;" onclick="selectMetaCor(this,'#455a64')"></button>
+              <button type="button" class="fin-meta-cor-btn" data-cor="#f9a825" style="background:#f9a825;" onclick="selectMetaCor(this,'#f9a825')"></button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" id="cancel-form-meta">Cancelar</button>
+        <button class="btn-primary" id="save-meta">Salvar Meta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts globais + local -->
   <script src="../../js/global.js"></script>
   <script src="financeiro.js"></script>
 </body>

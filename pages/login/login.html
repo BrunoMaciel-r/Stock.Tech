@@ -1,61 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acessar — Stock.Tech</title>
+    <meta name="description"
+        content="Acesse ou crie sua conta no Stock.Tech para gerenciar seu estoque com inteligência.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../css/landing.css">
 </head>
+
 <body class="login-body">
     <div class="login-card">
         <a href="../../index.html" class="nav-logo" style="justify-content: center; margin-bottom: 1.5rem; text-decoration: none; display: flex; font-weight: 800; font-size: 1.5rem; color: #0f0f0f;">Stock<span style="color: #00C44C;">.Tech</span></a>
-        
-        <h2 id="login-title" style="text-align: center; margin-bottom: 2rem;">Acessar Painel</h2>
-        
-        
+
+        <h2 id="login-title">Acessar Painel</h2>
+        <p class="login-subtitle" id="login-subtitle">Entre com suas credenciais para continuar</p>
+
+        <!-- Login Form -->
         <form id="login-form">
+            <div class="form-error-global" id="login-error"></div>
+
             <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
                 <label style="font-weight: 700; font-size: 0.85rem;">E-mail</label>
-                <input type="email" id="email" placeholder="admin@admin.com" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <input type="email" id="email" placeholder="seu@email.com" required
+                    style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 1rem;">
             </div>
-            
+
             <div class="form-group" style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
                 <label style="font-weight: 700; font-size: 0.85rem;">Senha</label>
-                <input type="password" id="senha" placeholder="123" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <div class="password-wrapper">
+                    <input type="password" id="senha" placeholder="••••••••" required
+                        style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 1rem;">
+                    <button type="button" class="toggle-password" data-target="senha" title="Mostrar senha">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            
-            <button type="submit" class="btn-green" style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 1rem;">Entrar</button>
-            
+
+            <button type="submit" class="btn-green"
+                style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-bottom: 1rem; font-size: 1rem; font-family: inherit; transition: all 0.25s;"
+                id="btn-login-submit">Entrar</button>
+
             <p style="text-align: center; font-size: 0.85rem; color: #666;">
-                Não tem uma conta? <a href="#" id="link-ir-cadastro" style="color: #00C44C; font-weight: 700; text-decoration: none;">Cadastre-se</a>
+                Não tem uma conta? <a href="#" id="link-ir-cadastro"
+                    style="color: #00C44C; font-weight: 700; text-decoration: none;">Cadastre-se</a>
             </p>
         </form>
 
-        
+        <!-- Register Form -->
         <form id="register-form" style="display: none; flex-direction: column;">
-            <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="form-error-global" id="register-error"></div>
+
+            <div class="form-group" style="margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
                 <label style="font-weight: 700; font-size: 0.85rem;">Nome Completo</label>
-                <input type="text" id="reg-nome" placeholder="Seu nome completo" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <input type="text" id="reg-nome" placeholder="Ex: João da Silva" required
+                    style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 0.95rem;">
             </div>
-            
-            <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
+
+            <div class="form-group" style="margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
                 <label style="font-weight: 700; font-size: 0.85rem;">E-mail</label>
-                <input type="email" id="reg-email" placeholder="exemplo@email.com" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <input type="email" id="reg-email" placeholder="seu@email.com" required
+                    style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 0.95rem;">
             </div>
-            
-            <div class="form-group" style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+
+            <div class="form-group" style="margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">Usuário</label>
+                <input type="text" id="reg-usuario" placeholder="Ex: joaosilva" required
+                    style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 0.95rem;">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
                 <label style="font-weight: 700; font-size: 0.85rem;">Senha</label>
-                <input type="password" id="reg-senha" placeholder="Escolha uma senha" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <div class="password-wrapper">
+                    <input type="password" id="reg-senha" placeholder="Mínimo 4 caracteres" required
+                        style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 0.95rem;">
+                    <button type="button" class="toggle-password" data-target="reg-senha" title="Mostrar senha">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            
-            <button type="submit" class="btn-green" style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 1rem;">Cadastrar</button>
-            
+
+            <div class="form-group" style="margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-weight: 700; font-size: 0.85rem;">Confirmar Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="reg-confirmar-senha" placeholder="Repita a senha" required
+                        style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #e0e0e0; font-family: inherit; font-size: 0.95rem;">
+                    <button type="button" class="toggle-password" data-target="reg-confirmar-senha"
+                        title="Mostrar senha">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-error-msg" id="error-senha-match">⚠ As senhas não coincidem</div>
+            </div>
+
+            <!-- Plan Selection -->
+            <div style="margin-bottom: 18px;">
+                <div class="plan-select-label">Escolha seu Plano</div>
+                <div class="plan-select-grid">
+                    <div class="plan-select-card" id="plan-card-basic" data-plan="basic"
+                        onclick="selecionarPlano('basic')">
+                        <div class="plan-card-name">Basic</div>
+                        <div class="plan-card-price">R$ 80/mês</div>
+                        <div class="plan-card-desc">Controle de estoque completo</div>
+                    </div>
+                    <div class="plan-select-card" id="plan-card-pro" data-plan="pro" onclick="selecionarPlano('pro')">
+                        <div class="plan-card-name">Pro</div>
+                        <div class="plan-card-price">R$ 150/mês</div>
+                        <div class="plan-card-desc">Estoque + Módulo Financeiro</div>
+                    </div>
+                </div>
+                <div class="form-error-msg" id="error-plano">⚠ Selecione um plano para continuar</div>
+                <input type="hidden" id="reg-plano" value="">
+            </div>
+
+            <button type="submit" class="btn-green"
+                style="width: 100%; padding: 14px; background: #00C44C; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-bottom: 1rem; font-size: 1rem; font-family: inherit; transition: all 0.25s;"
+                id="btn-register-submit">Criar Conta</button>
+
             <p style="text-align: center; font-size: 0.85rem; color: #666;">
-                Já tem uma conta? <a href="#" id="link-ir-login" style="color: #00C44C; font-weight: 700; text-decoration: none;">Entre</a>
+                Já tem uma conta? <a href="#" id="link-ir-login"
+                    style="color: #00C44C; font-weight: 700; text-decoration: none;">Entre</a>
             </p>
         </form>
     </div>
 
-    <script src="auth.js"></script>
+    <script src="../../js/global.js"></script>
+    <script src="./auth.js"></script>
 </body>
+
 </html>

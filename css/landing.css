@@ -303,9 +303,9 @@ nav{
 }
 .pricing-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:2rem;
-  max-width:1000px;
+  max-width:800px;
   margin:0 auto;
 }
 .plan{
@@ -468,4 +468,390 @@ footer{
     display: none;
     text-align: center;
     border: 1px solid #ffdada;
+}
+
+/* ══════════════════════════════════════════════
+   Password Toggle
+═══════════════════════════════════════════════ */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    width: 100%;
+    padding-right: 48px;
+}
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-mid);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: color 0.2s;
+    line-height: 1;
+}
+.toggle-password:hover {
+    color: var(--green);
+}
+
+/* ══════════════════════════════════════════════
+   Inline Form Errors
+═══════════════════════════════════════════════ */
+.form-error-msg {
+    color: #d93025;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 4px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+}
+.form-error-msg.visible {
+    display: flex;
+}
+.form-error-global {
+    background: #fff1f1;
+    color: #d93025;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid #ffdada;
+    text-align: center;
+    display: none;
+    margin-bottom: 1rem;
+    animation: shakeError 0.4s ease;
+}
+.form-error-global.visible {
+    display: block;
+}
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-4px); }
+}
+
+/* ══════════════════════════════════════════════
+   Plan Selection Cards
+═══════════════════════════════════════════════ */
+.plan-select-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    color: var(--black);
+}
+.plan-select-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+.plan-select-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    position: relative;
+    background: var(--white);
+}
+.plan-select-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 16px rgba(0,196,76,0.1);
+    transform: translateY(-2px);
+}
+.plan-select-card.selected {
+    border-color: var(--green);
+    background: #f0fff5;
+    box-shadow: 0 4px 20px rgba(0,196,76,0.15);
+}
+.plan-select-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: var(--green);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+.plan-select-card .plan-card-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+.plan-select-card .plan-card-price {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 6px;
+}
+.plan-select-card .plan-card-desc {
+    font-size: 0.72rem;
+    color: var(--gray-mid);
+    line-height: 1.4;
+}
+
+/* ══════════════════════════════════════════════
+   Payment Page
+═══════════════════════════════════════════════ */
+.payment-body {
+    background: linear-gradient(135deg, #f0fff5 0%, #fff 50%, #f0fff5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+.payment-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 860px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    background: var(--white);
+}
+.payment-summary {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    padding: 3rem 2.5rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.payment-summary h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+.payment-summary .plan-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+}
+.payment-summary .price-line {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+.payment-summary .price-line span {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.7;
+}
+.payment-summary .features-mini {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.payment-summary .features-mini div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+.payment-summary .features-mini div::before {
+    content: '✓';
+    background: rgba(255,255,255,0.25);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.payment-form-side {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.payment-form-side h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+.payment-disclaimer {
+    background: #fff1f1;
+    color: #d93025;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ffdada;
+    text-align: center;
+    line-height: 1.4;
+}
+.payment-form .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.payment-form .form-group {
+    margin-bottom: 14px;
+}
+.payment-form label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 6px;
+    display: block;
+}
+.payment-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-family: var(--font);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+.payment-form input:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0,196,76,0.1);
+}
+.btn-payment {
+    width: 100%;
+    padding: 14px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 8px;
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-payment:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,196,76,0.3);
+}
+.btn-payment:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+.payment-secure {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--gray-mid);
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* ══════════════════════════════════════════════
+   Login Page Improvements
+═══════════════════════════════════════════════ */
+.login-card {
+    max-width: 480px;
+}
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--black);
+}
+.login-subtitle {
+    text-align: center;
+    color: var(--gray-mid);
+    font-size: 0.88rem;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0,196,76,0.1);
+}
+.form-group input.input-error {
+    border-color: #d93025;
+    box-shadow: 0 0 0 3px rgba(217,48,37,0.08);
+}
+
+/* ══════════════════════════════════════════════
+   Responsive — Login & Payment
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+    .plan-select-grid {
+        grid-template-columns: 1fr;
+    }
+    .payment-container {
+        grid-template-columns: 1fr;
+    }
+    .payment-summary {
+        padding: 2rem;
+    }
+    .payment-form-side {
+        padding: 2rem;
+    }
+    .payment-form .form-row-2 {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.5rem 1.2rem;
+        border-radius: 14px;
+    }
+    .payment-body {
+        padding: 1rem;
+    }
+    .payment-summary {
+        padding: 1.5rem;
+    }
+    .payment-form-side {
+        padding: 1.5rem;
+    }
 }

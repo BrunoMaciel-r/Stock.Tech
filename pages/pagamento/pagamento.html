@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento — Stock.Tech</title>
+    <meta name="description" content="Finalize sua assinatura no Stock.Tech.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../css/landing.css">
+</head>
+
+<body class="payment-body">
+
+    <div class="payment-container">
+        <!-- Left: Plan Summary -->
+        <div class="payment-summary">
+            <a href="../../index.html"
+                style="margin-bottom:2rem;display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:800;font-size:1.3rem;">
+                <img src="../../assets/logo.png" alt="Logo" style="height: 44px;">
+                Stock<span style="color:rgba(255,255,255,0.7);">.Tech</span>
+            </a>
+
+            <div class="plan-tag" id="pay-plan-tag">PLANO</div>
+            <h2 id="pay-plan-name">Carregando...</h2>
+            <div class="price-line" id="pay-plan-price">R$0<span>/mês</span></div>
+
+            <div class="features-mini" id="pay-features">
+                <!-- Preenchido por JS -->
+            </div>
+        </div>
+
+        <!-- Right: Payment Form -->
+        <div class="payment-form-side">
+            <h3>Dados de Pagamento</h3>
+            <div class="payment-disclaimer">
+                ⚠ Utilize dados falsos. Esta etapa é apenas demonstrativa.
+            </div>
+
+            <form class="payment-form" id="payment-form" novalidate>
+                <div class="form-group">
+                    <label for="card-number">Número do Cartão</label>
+                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19"
+                        autocomplete="off" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="card-name">Nome no Cartão</label>
+                    <input type="text" id="card-name" placeholder="NOME COMO NO CARTÃO" autocomplete="off" required
+                        style="text-transform: uppercase;">
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="card-expiry">Validade</label>
+                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" autocomplete="off"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvv">CVV</label>
+                        <input type="text" id="card-cvv" placeholder="000" maxlength="4" autocomplete="off" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-payment" id="btn-confirm-payment">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Confirmar Pagamento
+                </button>
+            </form>
+
+            <div class="payment-secure">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                Ambiente seguro · Dados protegidos
+            </div>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+
+        // ═══════════════════════════════════════════
+        //  Dados do Plano
+        // ═══════════════════════════════════════════
+
+        const PLANOS_INFO = {
+            basic: {
+                nome: "Basic",
+                preco: "R$80",
+                tag: "PLANO BASIC",
+                features: [
+                    "Gestão completa de produtos",
+                    "Movimentações de estoque",
+                    "Pedidos de venda",
+                    "Gestão de contatos",
+                    "Alertas de estoque",
+                    "Dashboard operacional"
+                ]
+            },
+            pro: {
+                nome: "Pro",
+                preco: "R$150",
+                tag: "PLANO PRO",
+                features: [
+                    "Tudo do plano Basic",
+                    "Módulo financeiro completo",
+                    "Fluxo de caixa",
+                    "Contas a pagar",
+                    "Metas financeiras",
+                    "Relatórios avançados"
+                ]
+            }
+        };
+
+        // ═══════════════════════════════════════════
+        //  Inicialização
+        // ═══════════════════════════════════════════
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pendingRaw = sessionStorage.getItem('st_pendingUser');
+
+            if (!pendingRaw) {
+                // Sem dados de cadastro, redirecionar para login
+                window.location.href = '../login/login.html';
+                return;
+            }
+
+            const pendingUser = JSON.parse(pendingRaw);
+            const planoInfo = PLANOS_INFO[pendingUser.plano] || PLANOS_INFO.basic;
+
+            // Preencher resumo do plano
+            document.getElementById('pay-plan-tag').textContent = planoInfo.tag;
+            document.getElementById('pay-plan-name').textContent = 'Plano ' + planoInfo.nome;
+            document.getElementById('pay-plan-price').innerHTML = planoInfo.preco + '<span>/mês</span>';
+
+            const featuresContainer = document.getElementById('pay-features');
+            featuresContainer.innerHTML = planoInfo.features.map(f => `<div>${f}</div>`).join('');
+
+            // ═══════════════════════════════════════
+            //  Máscaras de Input
+            // ═══════════════════════════════════════
+
+            const cardNumber = document.getElementById('card-number');
+            const cardExpiry = document.getElementById('card-expiry');
+            const cardCvv = document.getElementById('card-cvv');
+
+            // Máscara: Número do cartão (0000 0000 0000 0000)
+            cardNumber.addEventListener('input', function () {
+                let val = this.value.replace(/\D/g, '').slice(0, 16);
+                this.value = val.replace(/(\d{4})(?=\d)/g, '$1 ');
+            });
+
+            // Máscara: Validade (MM/AA)
+            cardExpiry.addEventListener('input', function () {
+                let val = this.value.replace(/\D/g, '').slice(0, 4);
+                if (val.length >= 2) {
+                    val = val.slice(0, 2) + '/' + val.slice(2);
+                }
+                this.value = val;
+            });
+
+            // Máscara: CVV (somente números)
+            cardCvv.addEventListener('input', function () {
+                this.value = this.value.replace(/\D/g, '').slice(0, 4);
+            });
+
+            // ═══════════════════════════════════════
+            //  Submissão do Pagamento
+            // ═══════════════════════════════════════
+
+            const payForm = document.getElementById('payment-form');
+            const btnConfirm = document.getElementById('btn-confirm-payment');
+
+            payForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const num = cardNumber.value.replace(/\s/g, '');
+                const name = document.getElementById('card-name').value.trim();
+                const expiry = cardExpiry.value.trim();
+                const cvv = cardCvv.value.trim();
+
+                // Validações simples (é demonstrativo, mas damos feedback visual)
+                if (num.length < 13 || !name || expiry.length < 4 || cvv.length < 3) {
+                    btnConfirm.style.background = '#d93025';
+                    btnConfirm.textContent = 'Preencha todos os campos';
+                    setTimeout(() => {
+                        btnConfirm.style.background = '';
+                        btnConfirm.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Confirmar Pagamento';
+                    }, 2000);
+                    return;
+                }
+
+                // Simular processamento
+                btnConfirm.disabled = true;
+                btnConfirm.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Processando...';
+
+                // Adicionar animação de spin
+                const style = document.createElement('style');
+                style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+                document.head.appendChild(style);
+
+                setTimeout(() => {
+                    btnConfirm.style.background = '#2e7d32';
+                    btnConfirm.innerHTML = '✓ Pagamento Confirmado!';
+
+                    // Salvar no array global de usuários
+                    let usuarios = JSON.parse(localStorage.getItem("stockTechUsers") || "[]");
+
+                    // O orgId será igual ao e-mail para contas que compram o sistema
+                    pendingUser.orgId = pendingUser.email;
+                    usuarios.push(pendingUser);
+                    localStorage.setItem("stockTechUsers", JSON.stringify(usuarios));
+
+                    // Auto-login do usuário recém-cadastrado
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem("st_nome", pendingUser.nome);
+                    localStorage.setItem("st_email", pendingUser.email);
+                    localStorage.setItem("st_cargo", pendingUser.cargo || "Administrador");
+                    localStorage.setItem("st_plano", pendingUser.plano);
+                    localStorage.setItem("st_orgId", pendingUser.orgId);
+
+                    // Limpar dados temporários
+                    sessionStorage.removeItem('st_pendingUser');
+
+                    // Redirecionar para o dashboard
+                    setTimeout(() => {
+                        window.location.href = '../dashboard/dashboard.html';
+                    }, 1200);
+                }, 1800);
+            });
+        });
+    </script>
+</body>
+
+</html>

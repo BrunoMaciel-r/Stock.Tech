@@ -197,9 +197,8 @@
                 <h3>Abrir Ticket de Suporte</h3>
                 <button id="fecharTicket" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            
-            <div class="modal-body">
-                <form id="form-ticket">
+            <form id="form-ticket">
+                <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label" for="ticketNome">Nome Completo *</label>
                         <input type="text" class="form-control" id="ticketNome" placeholder="Seu nome" required>
@@ -212,13 +211,13 @@
                         <label class="form-label" for="ticketMensagem">Mensagem / Dúvida *</label>
                         <textarea class="form-control" id="ticketMensagem" rows="4" placeholder="Descreva seu problema com detalhes..." required></textarea>
                     </div>
-                </form>
-            </div>
+                </div>
 
-            <div class="modal-foot">
-                <button id="btnCancelarTicket" class="btn-ghost">Cancelar</button>
-                <button id="enviarTicket" class="btn-primary">Enviar Ticket</button>
-            </div>
+                <div class="modal-foot">
+                    <button type="button" id="btnCancelarTicket" class="btn-ghost">Cancelar</button>
+                    <button type="submit" id="enviarTicket" class="btn-primary">Enviar Ticket</button>
+                </div>
+            </form>
         </div>
     </div>
 

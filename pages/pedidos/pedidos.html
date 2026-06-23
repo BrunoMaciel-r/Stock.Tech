@@ -104,6 +104,18 @@
                         <input type="text" class="form-control" id="venda-cliente" placeholder="Nome do cliente" required>
                     </div>
                     <div class="form-row">
+                        <div class="form-group" style="flex:2;">
+                            <label class="form-label" for="venda-produto">Produto *</label>
+                            <select class="form-control" id="venda-produto" required>
+                                <option value="">Selecione um produto</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label class="form-label" for="venda-quantidade">Quantidade * <br><small id="venda-estoque-disp" style="color:var(--primary);"></small></label>
+                            <input type="number" min="1" class="form-control" id="venda-quantidade" placeholder="Qtd" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group">
                             <label class="form-label" for="venda-valor">Valor (R$) *</label>
                             <input type="number" step="0.01" min="0" class="form-control" id="venda-valor" placeholder="0,00" required>

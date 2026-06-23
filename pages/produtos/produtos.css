@@ -2,10 +2,6 @@
 
 .produtos-body {
     flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 30px;
-    align-items: start;
 }
 
 .produtos-grid {
@@ -222,12 +218,17 @@ body[data-theme="dark"] .chip:hover {
 }
 
 @media (max-width: 900px) {
-    .produtos-body {
-        grid-template-columns: 1fr;
+    .produtos-header-actions {
+        flex-direction: column;
+        align-items: stretch !important;
     }
     .produtos-acoes {
-        position: static;
-        order: -1;
+        width: 100%;
+        text-align: center;
+    }
+    .produtos-acoes a {
+        display: block !important;
+        width: 100%;
     }
 }
 

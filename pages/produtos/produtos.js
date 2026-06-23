@@ -229,18 +229,18 @@ function iniciarFormularioProduto() {
             bd.produtos.push(dados);
         }
 
-        
-        const descMov = idVal ? "Edição de informações do produto" : "Estoque inicial do produto cadastrado";
-        bd.movimentacoes = bd.movimentacoes || [];
-        bd.movimentacoes.push({
-            id: `MOV-${String(bd.movimentacoes.length + 1).padStart(3, "0")}`,
-            nome: dados.nome,
-            tipo: "entrada",
-            categoria: dados.categoria,
-            valor: dados.precoCusto * dados.quantidade,
-            data: new Date().toISOString().split('T')[0],
-            descricao: descMov
-        });
+        if (!idVal) {
+            bd.movimentacoes = bd.movimentacoes || [];
+            bd.movimentacoes.push({
+                id: `MOV-${String(bd.movimentacoes.length + 1).padStart(3, "0")}`,
+                nome: dados.nome,
+                tipo: "entrada",
+                categoria: dados.categoria,
+                valor: dados.precoCusto * dados.quantidade,
+                data: new Date().toISOString().split('T')[0],
+                descricao: "Estoque inicial do produto cadastrado"
+            });
+        }
 
         window.salvarBanco(bd);
         window.mostrarToast(idVal ? "Produto editado com sucesso!" : "Produto cadastrado com sucesso!");

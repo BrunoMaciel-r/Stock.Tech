@@ -27,21 +27,23 @@
         <main class="page-content">
 
             
-            <div class="filtro-chips" id="filtroChips">
-                <span class="filtro-chips-titulo"><i class="fa-solid fa-filter"></i> Categorias:</span>
-                <span class="chip active" data-categoria="todos">Todos</span>
+            <div class="produtos-header-actions" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; flex-wrap: wrap;">
+                <div class="filtro-chips" id="filtroChips" style="margin-bottom: 0; flex: 1;">
+                    <span class="filtro-chips-titulo"><i class="fa-solid fa-filter"></i> Categorias:</span>
+                    <span class="chip active" data-categoria="todos">Todos</span>
+                </div>
+
+                <div class="produtos-acoes">
+                    <a href="novo-produto.html" class="btn-primary" style="text-decoration:none; padding:12px 24px; border-radius:12px; display: inline-block; white-space: nowrap;">
+                        <i class="fa-solid fa-plus"></i> Novo Produto
+                    </a>
+                </div>
             </div>
 
             <section class="produtos-body">
                 
                 <div class="produtos-grid" id="produtosGrid"></div>
 
-                
-                <div class="produtos-acoes">
-                    <a href="novo-produto.html" class="btn-primary" style="text-decoration:none; padding:12px 24px; border-radius:12px;">
-                        <i class="fa-solid fa-plus"></i> Novo Produto
-                    </a>
-                </div>
             </section>
         </main>
     </div>

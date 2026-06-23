@@ -19,8 +19,12 @@ const fCliente = document.getElementById("venda-cliente");
 const fValor = document.getElementById("venda-valor");
 const fPagamento = document.getElementById("venda-pagamento");
 const fStatus = document.getElementById("venda-status");
+const fProduto = document.getElementById("venda-produto");
+const fQuantidade = document.getElementById("venda-quantidade");
+const fEstoqueDisp = document.getElementById("venda-estoque-disp");
 
 let vendas = [];
+let produtosDisp = [];
 let idEdicao = null;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,8 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
 function carregarDados() {
     const bd = window.lerBanco();
     vendas = bd.vendas || [];
+    produtosDisp = bd.produtos || [];
     renderizarTabela();
     atualizarResumo();
+    carregarProdutos();
+}
+
+function carregarProdutos() {
+    if (!fProduto) return;
+    fProduto.innerHTML = '<option value="">Selecione um produto</option>';
+    produtosDisp.forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p.id;
+        opt.textContent = `${p.nome}`;
+        opt.dataset.preco = p.preco || 0;
+        opt.dataset.custo = p.precoCusto || 0;
+        opt.dataset.estoque = p.quantidade || 0;
+        opt.dataset.nome = p.nome;
+        fProduto.appendChild(opt);
+    });
 }
 
 function salvarDados() {
@@ -56,6 +77,26 @@ function configurarEventos() {
     btnCancelarVenda.addEventListener("click", fechar);
 
     btnRegistrarVenda.addEventListener("click", salvarVenda);
+
+    const calcTotal = () => {
+        const opt = fProduto.options[fProduto.selectedIndex];
+        if (!opt || !opt.value) {
+            fEstoqueDisp.textContent = "";
+            return;
+        }
+        const preco = parseFloat(opt.dataset.preco) || 0;
+        const estq = parseInt(opt.dataset.estoque) || 0;
+        fEstoqueDisp.textContent = `(Estoque: ${estq})`;
+        fEstoqueDisp.style.color = estq > 0 ? 'var(--primary)' : 'var(--danger)';
+        
+        const qtd = parseInt(fQuantidade.value) || 0;
+        if (qtd > 0) {
+            fValor.value = (preco * qtd).toFixed(2);
+        }
+    };
+
+    fProduto.addEventListener("change", calcTotal);
+    fQuantidade.addEventListener("input", calcTotal);
 }
 
 function renderizarTabela() {
@@ -83,11 +124,14 @@ function renderizarTabela() {
         const valorFmt = Number(v.valorTotal || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         const dataFmt = v.data ? new Date(v.data + 'T00:00:00').toLocaleDateString("pt-BR") : "—";
         const badgeClass = `badge-${v.status}`;
+        const prodObj = produtosDisp.find(p => String(p.id) === String(v.produtoId));
+        const prodNome = prodObj ? prodObj.nome : 'Produto Genérico';
+        const qtdStr = v.quantidade ? ` (${v.quantidade}x)` : '';
 
         tbodyVendas.innerHTML += `
             <tr>
                 <td><strong>#${v.id}</strong></td>
-                <td>${v.cliente}</td>
+                <td>${v.cliente}<br><small style="color:var(--text-muted);">${prodNome}${qtdStr}</small></td>
                 <td>${dataFmt}</td>
                 <td>${valorFmt}</td>
                 <td>${v.pagamento || "Pix"}</td>
@@ -118,45 +162,99 @@ function salvarVenda(e) {
     const valor = parseFloat(fValor.value);
     const pagamento = fPagamento.value;
     const status = fStatus.value;
+    const produtoId = fProduto.value;
+    const quantidade = parseInt(fQuantidade.value) || 0;
 
-    if (!cliente || isNaN(valor)) {
-        window.mostrarToast("Por favor, preencha os campos obrigatórios!", "warning");
+    if (!cliente || isNaN(valor) || !produtoId || quantidade <= 0) {
+        window.mostrarToast("Por favor, preencha todos os campos corretamente!", "warning");
         return;
     }
+
+    const bd = window.lerBanco();
+    const prodIdx = bd.produtos.findIndex(p => String(p.id) === String(produtoId));
+    if (prodIdx === -1) return;
+
+    const produto = bd.produtos[prodIdx];
+    const custoUn = parseFloat(produto.precoCusto) || 0;
+    const lucroReal = valor - (custoUn * quantidade);
 
     if (idEdicao) {
         
         const idx = vendas.findIndex(v => String(v.id) === String(idEdicao));
         if (idx !== -1) {
+            const vendaAntiga = vendas[idx];
+            
+            if (vendaAntiga.produtoId === produtoId) {
+                const diff = quantidade - (vendaAntiga.quantidade || 0);
+                if (produto.quantidade < diff) {
+                    window.mostrarToast("Estoque insuficiente para a nova quantidade!", "danger");
+                    return;
+                }
+                bd.produtos[prodIdx].quantidade -= diff;
+                bd.produtos[prodIdx].vendasNoMes = (bd.produtos[prodIdx].vendasNoMes || 0) + diff;
+            } else {
+                const oldProdIdx = bd.produtos.findIndex(p => String(p.id) === String(vendaAntiga.produtoId));
+                if (oldProdIdx !== -1) {
+                    bd.produtos[oldProdIdx].quantidade += (vendaAntiga.quantidade || 0);
+                    bd.produtos[oldProdIdx].vendasNoMes = Math.max(0, (bd.produtos[oldProdIdx].vendasNoMes || 0) - (vendaAntiga.quantidade || 0));
+                }
+                
+                if (produto.quantidade < quantidade) {
+                    window.mostrarToast("Estoque insuficiente!", "danger");
+                    return;
+                }
+                bd.produtos[prodIdx].quantidade -= quantidade;
+                bd.produtos[prodIdx].vendasNoMes = (bd.produtos[prodIdx].vendasNoMes || 0) + quantidade;
+            }
+
             vendas[idx] = {
                 ...vendas[idx],
                 cliente,
+                produtoId,
+                quantidade,
                 valorTotal: valor,
-                lucro: valor * 0.25, 
+                lucro: lucroReal, 
                 pagamento,
                 status
             };
+            
+            if (bd.movimentacoes) {
+                const movIdx = bd.movimentacoes.findIndex(m => m.refPedido === String(idEdicao));
+                if (movIdx !== -1) {
+                    bd.movimentacoes[movIdx].nome = `Venda - Cliente ${cliente}`;
+                    bd.movimentacoes[movIdx].valor = valor;
+                }
+            }
+            window.salvarBanco(bd);
             window.mostrarToast("Pedido de venda atualizado!");
         }
     } else {
-        
+        if (produto.quantidade < quantidade) {
+            window.mostrarToast("Estoque insuficiente!", "danger");
+            return;
+        }
+        bd.produtos[prodIdx].quantidade -= quantidade;
+        bd.produtos[prodIdx].vendasNoMes = (bd.produtos[prodIdx].vendasNoMes || 0) + quantidade;
+
         const novoId = (vendas.length + 1).toString();
         const novaVenda = {
             id: novoId,
             cliente,
+            produtoId,
+            quantidade,
             data: new Date().toISOString().split('T')[0],
             valorTotal: valor,
-            lucro: valor * 0.25,
+            lucro: lucroReal,
             pagamento,
             status
         };
         vendas.push(novaVenda);
 
         
-        const bd = window.lerBanco();
         bd.movimentacoes = bd.movimentacoes || [];
         bd.movimentacoes.push({
             id: `MOV-${String(bd.movimentacoes.length + 1).padStart(3, "0")}`,
+            refPedido: novoId,
             nome: `Venda - Cliente ${cliente}`,
             tipo: "venda",
             categoria: "Comercial & Vendas",
@@ -190,18 +288,41 @@ window.editarVenda = function(id) {
 
     idEdicao = venda.id;
     fCliente.value = venda.cliente;
+    fProduto.value = venda.produtoId || "";
+    fQuantidade.value = venda.quantidade || "";
     fValor.value = venda.valorTotal;
     fPagamento.value = venda.pagamento || "Pix";
     fStatus.value = venda.status;
+
+    const opt = fProduto.options[fProduto.selectedIndex];
+    if (opt && opt.value) {
+        const estq = parseInt(opt.dataset.estoque) || 0;
+        fEstoqueDisp.textContent = `(Estoque: ${estq})`;
+        fEstoqueDisp.style.color = estq > 0 ? 'var(--primary)' : 'var(--danger)';
+    }
 
     modalNovaVenda.classList.add("open");
 };
 
 window.excluirVenda = function(id) {
-    if (confirm("Tem certeza que deseja remover este registro de venda?")) {
+    if (confirm("Tem certeza que deseja remover este registro de venda? O estoque será devolvido.")) {
+        const venda = vendas.find(v => String(v.id) === String(id));
         vendas = vendas.filter(v => String(v.id) !== String(id));
+        
+        const bd = window.lerBanco();
+        if (venda && venda.produtoId) {
+            const prodIdx = bd.produtos.findIndex(p => String(p.id) === String(venda.produtoId));
+            if (prodIdx !== -1) {
+                bd.produtos[prodIdx].quantidade += (venda.quantidade || 0);
+                bd.produtos[prodIdx].vendasNoMes = Math.max(0, (bd.produtos[prodIdx].vendasNoMes || 0) - (venda.quantidade || 0));
+            }
+        }
+        
+        bd.movimentacoes = (bd.movimentacoes || []).filter(m => m.refPedido !== String(id));
+        window.salvarBanco(bd);
+        
         salvarDados();
         carregarDados();
-        window.mostrarToast("Pedido de venda removido!");
+        window.mostrarToast("Pedido removido e estoque devolvido!");
     }
 };

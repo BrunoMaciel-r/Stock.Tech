@@ -1,299 +1,371 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock.Tech — Controle de Estoque Inteligente</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/landing.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock.Tech — Controle de Estoque Inteligente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/landing.css">
 </head>
+
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">Stock<span>.Tech</span></a>
-  <div class="nav-links">
-    <a href="#features">Funcionalidades</a>
-    <a href="#how">Como Funciona</a>
-    <a href="#pricing">Preços</a>
-  </div>
-  <div class="nav-actions">
-    <a href="pages/login/login.html" class="btn-ghost">Entrar</a>
-    <a href="pages/login/login.html" class="btn-green">Começar grátis</a>
-  </div>
-</nav>
+  <nav>
+    <a href="#" class="nav-logo" style="display: flex; align-items: center; gap: 8px;">
+      <img src="assets/logo.png" alt="Stock.Tech" style="height: 36px;">
+      Stock<span>.Tech</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Funcionalidades</a>
+      <a href="#how">Como Funciona</a>
+      <a href="#pricing">Preços</a>
+    </div>
+    <div class="nav-actions">
+      <a href="pages/login/login.html" class="btn-ghost">Entrar</a>
+      <a href="pages/login/login.html" class="btn-green">Começar grátis</a>
+    </div>
+  </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">Novo — Gestão inteligente de estoque</div>
-    <h1>Controle seu estoque com <span>inteligência.</span></h1>
-    <p class="hero-desc">Chega de planilha. O Stock.Tech monitora, alerta e prevê rupturas automaticamente para você focar no que importa.</p>
-    <div class="hero-checks">
-      <div class="hero-check">
-        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-        Monitore seu estoque em tempo real
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Novo — Gestão inteligente de estoque</div>
+      <h1>Controle seu estoque com <span>inteligência.</span></h1>
+      <p class="hero-desc">Chega de planilha. O Stock.Tech monitora, alerta e prevê rupturas automaticamente para você
+        focar no que importa.</p>
+      <div class="hero-checks">
+        <div class="hero-check">
+          <div class="check-icon"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg></div>
+          Monitore seu estoque em tempo real
+        </div>
+        <div class="hero-check">
+          <div class="check-icon"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg></div>
+          Receba alertas de reposição automáticos
+        </div>
+        <div class="hero-check">
+          <div class="check-icon"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg></div>
+          Automatize pedidos de reposição
+        </div>
       </div>
-      <div class="hero-check">
-        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-        Receba alertas de reposição automáticos
-      </div>
-      <div class="hero-check">
-        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-        Automatize pedidos de reposição
+      <div class="hero-ctas">
+        <a href="pages/login/login.html" class="btn-hero">Começar grátis</a>
+        <a href="#features" class="btn-hero-outline">Ver funcionalidades</a>
       </div>
     </div>
-    <div class="hero-ctas">
-      <a href="pages/login/login.html" class="btn-hero">Começar grátis</a>
-      <a href="#features" class="btn-hero-outline">Ver funcionalidades</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img-wrap">
-      <div class="hero-img-bg"></div>
-      <div style="background:linear-gradient(135deg,#00C44C,#00A03E);border-radius:16px;padding:2rem;position:relative;z-index:1">
-        <div style="background:rgba(255,255,255,0.95);border-radius:10px;padding:1.5rem;margin-bottom:1rem">
-          <div style="font-size:0.7rem;color:#888;margin-bottom:0.5rem;font-weight:600;letter-spacing:0.1em">ESTOQUE TOTAL</div>
-          <div style="font-size:2rem;font-weight:900;color:#0f0f0f">1.284 <span style="font-size:1rem;color:#888">itens</span></div>
-          <div style="font-size:0.8rem;color:#00C44C;font-weight:600;margin-top:4px">↑ 12% este mês</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-          <div style="background:rgba(255,255,255,0.2);border-radius:8px;padding:1rem">
-            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-bottom:4px">EM FALTA</div>
-            <div style="font-size:1.4rem;font-weight:900;color:#fff">3</div>
-            <div style="font-size:0.7rem;color:rgba(255,80,80,0.9);font-weight:600">⚠ Crítico</div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <div class="hero-img-bg"></div>
+        <div
+          style="background:linear-gradient(135deg,#00C44C,#00A03E);border-radius:16px;padding:2rem;position:relative;z-index:1">
+          <div style="background:rgba(255,255,255,0.95);border-radius:10px;padding:1.5rem;margin-bottom:1rem">
+            <div style="font-size:0.7rem;color:#888;margin-bottom:0.5rem;font-weight:600;letter-spacing:0.1em">ESTOQUE
+              TOTAL</div>
+            <div style="font-size:2rem;font-weight:900;color:#0f0f0f">1.284 <span
+                style="font-size:1rem;color:#888">itens</span></div>
+            <div style="font-size:0.8rem;color:#00C44C;font-weight:600;margin-top:4px">↑ 12% este mês</div>
           </div>
-          <div style="background:rgba(255,255,255,0.2);border-radius:8px;padding:1rem">
-            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-bottom:4px">PEDIDOS</div>
-            <div style="font-size:1.4rem;font-weight:900;color:#fff">24</div>
-            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600">Este mês</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.95);border-radius:8px;padding:1rem">
-          <div style="font-size:0.7rem;color:#888;margin-bottom:8px;font-weight:600">PRODUTOS CRÍTICOS</div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
-              <span style="color:#333">Caneta Azul</span>
-              <span style="background:#fff0f0;color:#ff4444;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">2 un</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <div style="background:rgba(255,255,255,0.2);border-radius:8px;padding:1rem">
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-bottom:4px">EM FALTA</div>
+              <div style="font-size:1.4rem;font-weight:900;color:#fff">3</div>
+              <div style="font-size:0.7rem;color:rgba(255,80,80,0.9);font-weight:600">⚠ Crítico</div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
-              <span style="color:#333">Papel A4</span>
-              <span style="background:#fff8e0;color:#f0a000;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">5 un</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
-              <span style="color:#333">Grampo 26/6</span>
-              <span style="background:#f0fff5;color:#00C44C;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">18 un</span>
+            <div style="background:rgba(255,255,255,0.2);border-radius:8px;padding:1rem">
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-bottom:4px">PEDIDOS</div>
+              <div style="font-size:1.4rem;font-weight:900;color:#fff">24</div>
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600">Este mês</div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>Controle de Estoque</span><span class="dot">✦</span>
-    <span>Alertas Automáticos</span><span class="dot">✦</span>
-    <span>Relatórios em Tempo Real</span><span class="dot">✦</span>
-    <span>Gestão de Fornecedores</span><span class="dot">✦</span>
-    <span>Previsão de Demanda</span><span class="dot">✦</span>
-    <span>Multi-filial</span><span class="dot">✦</span>
-    <span>Controle de Estoque</span><span class="dot">✦</span>
-    <span>Alertas Automáticos</span><span class="dot">✦</span>
-    <span>Relatórios em Tempo Real</span><span class="dot">✦</span>
-    <span>Gestão de Fornecedores</span><span class="dot">✦</span>
-    <span>Previsão de Demanda</span><span class="dot">✦</span>
-    <span>Multi-filial</span><span class="dot">✦</span>
-  </div>
-</div>
-
-<section class="features" id="features">
-  <div class="section-label reveal">— Funcionalidades</div>
-  <h2 class="section-title reveal">Tudo que você precisa<br>para gerir seu estoque</h2>
-  <p class="section-desc reveal">Uma plataforma completa para pequenos e médios empreendedores controlarem seu estoque com precisão e eficiência.</p>
-  <div class="features-grid">
-    <div class="feature-card reveal">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="feature-title">Gestão de Produtos</div>
-      <p class="feature-desc">Cadastre e organize todos os seus produtos com fotos, categorias, preços e quantidades mínimas de estoque.</p>
-    </div>
-    <div class="feature-card reveal reveal-delay-1">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-      </div>
-      <div class="feature-title">Relatórios Avançados</div>
-      <p class="feature-desc">Visualize gráficos de movimentação, histórico de entradas e saídas e tendências de consumo em tempo real.</p>
-    </div>
-    <div class="feature-card reveal reveal-delay-2">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-      </div>
-      <div class="feature-title">Alertas Inteligentes</div>
-      <p class="feature-desc">Receba notificações automáticas quando produtos atingirem o estoque mínimo antes que vire problema.</p>
-    </div>
-    <div class="feature-card reveal reveal-delay-3">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="feature-title">Gestão de Fornecedores</div>
-      <p class="feature-desc">Mantenha um cadastro completo de fornecedores com contatos, prazos e histórico de pedidos.</p>
-    </div>
-    <div class="feature-card reveal reveal-delay-4">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      </div>
-      <div class="feature-title">Previsão de Demanda</div>
-      <p class="feature-desc">Algoritmos inteligentes analisam seu histórico e preveem quando e quanto repor para nunca ficar sem estoque.</p>
-    </div>
-    <div class="feature-card reveal reveal-delay-5">
-      <div class="feature-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      </div>
-      <div class="feature-title">Multi-dispositivo</div>
-      <p class="feature-desc">Acesse de qualquer lugar pelo celular, tablet ou computador. Seus dados sincronizados em tempo real.</p>
-    </div>
-  </div>
-</section>
-
-<section class="how" id="how">
-  <div class="how-inner">
-    <div>
-      <div class="section-label reveal">— Como Funciona</div>
-      <h2 class="section-title reveal">Simples assim.<br>3 passos para<br>o controle total.</h2>
-      <p class="section-desc reveal" style="margin-bottom:2.5rem">Sem complicação. Comece em minutos e tenha seu estoque sob controle ainda hoje.</p>
-      <div class="how-steps">
-        <div class="step reveal">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <div class="step-title">Cadastre seus produtos</div>
-            <div class="step-desc">Importe de planilhas ou cadastre manualmente. Adicione fotos, categorias e quantidades mínimas.</div>
-          </div>
-        </div>
-        <div class="step reveal reveal-delay-1">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <div class="step-title">Configure seus alertas</div>
-            <div class="step-desc">Defina quando quer ser avisado. Por e-mail, WhatsApp ou notificação no app.</div>
-          </div>
-        </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <div class="step-title">Gerencie em tempo real</div>
-            <div class="step-desc">Registre entradas e saídas, acompanhe relatórios e tome decisões com dados precisos.</div>
+          <div style="background:rgba(255,255,255,0.95);border-radius:8px;padding:1rem">
+            <div style="font-size:0.7rem;color:#888;margin-bottom:8px;font-weight:600">PRODUTOS CRÍTICOS</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
+                <span style="color:#333">Caneta Azul</span>
+                <span
+                  style="background:#fff0f0;color:#ff4444;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">2
+                  un</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
+                <span style="color:#333">Papel A4</span>
+                <span
+                  style="background:#fff8e0;color:#f0a000;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">5
+                  un</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem">
+                <span style="color:#333">Grampo 26/6</span>
+                <span
+                  style="background:#f0fff5;color:#00C44C;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">18
+                  un</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="how-visual reveal reveal-delay-2">
-      <div class="visual-card">
-        <div class="visual-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-        <div class="visual-text">
-          <div class="visual-label">Produto cadastrado</div>
-          <div class="visual-value">Caneta Azul BIC</div>
-        </div>
-        <div class="visual-badge green">✓ Ok</div>
-      </div>
-      <div class="visual-card">
-        <div class="visual-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div>
-        <div class="visual-text">
-          <div class="visual-label">Alerta disparado</div>
-          <div class="visual-value">Papel A4 — 5 un restantes</div>
-        </div>
-        <div class="visual-badge red">⚠ Crítico</div>
-      </div>
-      <div class="visual-card">
-        <div class="visual-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div>
-        <div class="visual-text">
-          <div class="visual-label">Relatório gerado</div>
-          <div class="visual-value">+23% eficiência</div>
-        </div>
-        <div class="visual-badge green">↑ Alta</div>
-      </div>
-      <div class="visual-card">
-        <div class="visual-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="visual-text">
-          <div class="visual-label">Dados protegidos</div>
-          <div class="visual-value">Backup automático</div>
-        </div>
-        <div class="visual-badge green">✓ Seguro</div>
-      </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Controle de Estoque</span><span class="dot">✦</span>
+      <span>Alertas Automáticos</span><span class="dot">✦</span>
+      <span>Relatórios em Tempo Real</span><span class="dot">✦</span>
+      <span>Gestão de Fornecedores</span><span class="dot">✦</span>
+      <span>Previsão de Demanda</span><span class="dot">✦</span>
+      <span>Multi-filial</span><span class="dot">✦</span>
+      <span>Controle de Estoque</span><span class="dot">✦</span>
+      <span>Alertas Automáticos</span><span class="dot">✦</span>
+      <span>Relatórios em Tempo Real</span><span class="dot">✦</span>
+      <span>Gestão de Fornecedores</span><span class="dot">✦</span>
+      <span>Previsão de Demanda</span><span class="dot">✦</span>
+      <span>Multi-filial</span><span class="dot">✦</span>
     </div>
   </div>
-</section>
 
-<section class="pricing" id="pricing">
-  <div class="section-label reveal">— Planos</div>
-  <h2 class="section-title reveal">Preço justo para<br>cada tamanho de negócio</h2>
-  <p class="section-desc reveal" style="margin:0 auto 4rem">Comece grátis. Escale quando precisar. Sem surpresas na fatura.</p>
-  <div class="pricing-grid">
-    <div class="plan reveal">
-      <div class="plan-name">Grátis</div>
-      <div class="plan-price">R$0<span>/mês</span></div>
-      <div class="plan-period">Para começar</div>
-      <div class="plan-features">
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Até 50 produtos</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>1 usuário</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Alertas básicos</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Relatórios simples</div>
+  <section class="features" id="features">
+    <div class="section-label reveal">— Funcionalidades</div>
+    <h2 class="section-title reveal">Tudo que você precisa<br>para gerir seu estoque</h2>
+    <p class="section-desc reveal">Uma plataforma completa para pequenos e médios empreendedores controlarem seu estoque
+      com precisão e eficiência.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M3 9h18M9 21V9" />
+          </svg>
+        </div>
+        <div class="feature-title">Gestão de Produtos</div>
+        <p class="feature-desc">Cadastre e organize todos os seus produtos com fotos, categorias, preços e quantidades
+          mínimas de estoque.</p>
       </div>
-      <a href="pages/login/login.html" class="plan-btn plan-btn-outline">Começar grátis</a>
-    </div>
-    <div class="plan featured reveal reveal-delay-1">
-      <div class="plan-badge">Mais popular</div>
-      <div class="plan-name">Pro</div>
-      <div class="plan-price">R$49<span>/mês</span></div>
-      <div class="plan-period">Para negócios em crescimento</div>
-      <div class="plan-features">
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Produtos ilimitados</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Até 5 usuários</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Alertas inteligentes</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Relatórios avançados</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Gestão de fornecedores</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Previsão de demanda</div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 20V10M12 20V4M6 20v-6" />
+          </svg>
+        </div>
+        <div class="feature-title">Relatórios Avançados</div>
+        <p class="feature-desc">Visualize gráficos de movimentação, histórico de entradas e saídas e tendências de
+          consumo em tempo real.</p>
       </div>
-      <a href="pages/login/login.html" class="plan-btn plan-btn-filled">Começar agora</a>
-    </div>
-    <div class="plan reveal reveal-delay-2">
-      <div class="plan-name">Enterprise</div>
-      <div class="plan-price">R$149<span>/mês</span></div>
-      <div class="plan-period">Para grandes operações</div>
-      <div class="plan-features">
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Tudo do Pro</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Usuários ilimitados</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Multi-filial</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>API de integração</div>
-        <div class="plan-feature"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Suporte prioritário</div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </div>
+        <div class="feature-title">Alertas Inteligentes</div>
+        <p class="feature-desc">Receba notificações automáticas quando produtos atingirem o estoque mínimo antes que
+          vire problema.</p>
       </div>
-      <a href="pages/login/login.html" class="plan-btn plan-btn-outline">Falar com vendas</a>
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div class="feature-title">Gestão de Fornecedores</div>
+        <p class="feature-desc">Mantenha um cadastro completo de fornecedores com contatos, prazos e histórico de
+          pedidos.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+            <polyline points="17 6 23 6 23 12" />
+          </svg>
+        </div>
+        <div class="feature-title">Previsão de Demanda</div>
+        <p class="feature-desc">Algoritmos inteligentes analisam seu histórico e preveem quando e quanto repor para
+          nunca ficar sem estoque.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-5">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+        </div>
+        <div class="feature-title">Multi-dispositivo</div>
+        <p class="feature-desc">Acesse de qualquer lugar pelo celular, tablet ou computador. Seus dados sincronizados em
+          tempo real.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta">
-  <div class="cta-inner">
-    <h2>Pronto para transformar seu estoque?</h2>
-    <p>Junte-se a milhares de empreendedores que já controlam seu estoque com inteligência. Comece grátis hoje.</p>
-    <a href="pages/login/login.html" class="btn-cta">Criar conta grátis</a>
-    <div class="cta-note">Sem cartão de crédito. Cancele quando quiser.</div>
-  </div>
-</section>
+  <section class="how" id="how">
+    <div class="how-inner">
+      <div>
+        <div class="section-label reveal">— Como Funciona</div>
+        <h2 class="section-title reveal">Simples assim.<br>3 passos para<br>o controle total.</h2>
+        <p class="section-desc reveal" style="margin-bottom:2.5rem">Sem complicação. Comece em minutos e tenha seu
+          estoque sob controle ainda hoje.</p>
+        <div class="how-steps">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Cadastre seus produtos</div>
+              <div class="step-desc">Importe de planilhas ou cadastre manualmente. Adicione fotos, categorias e
+                quantidades mínimas.</div>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-1">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Configure seus alertas</div>
+              <div class="step-desc">Defina quando quer ser avisado. Por e-mail, WhatsApp ou notificação no app.</div>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Gerencie em tempo real</div>
+              <div class="step-desc">Registre entradas e saídas, acompanhe relatórios e tome decisões com dados
+                precisos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-visual reveal reveal-delay-2">
+        <div class="visual-card">
+          <div class="visual-icon"><svg viewBox="0 0 24 24">
+              <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            </svg></div>
+          <div class="visual-text">
+            <div class="visual-label">Produto cadastrado</div>
+            <div class="visual-value">Caneta Azul BIC</div>
+          </div>
+          <div class="visual-badge green">✓ Ok</div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-icon"><svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            </svg></div>
+          <div class="visual-text">
+            <div class="visual-label">Alerta disparado</div>
+            <div class="visual-value">Papel A4 — 5 un restantes</div>
+          </div>
+          <div class="visual-badge red">⚠ Crítico</div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-icon"><svg viewBox="0 0 24 24">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+            </svg></div>
+          <div class="visual-text">
+            <div class="visual-label">Relatório gerado</div>
+            <div class="visual-value">+23% eficiência</div>
+          </div>
+          <div class="visual-badge green">↑ Alta</div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-icon"><svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <div class="visual-text">
+            <div class="visual-label">Dados protegidos</div>
+            <div class="visual-value">Backup automático</div>
+          </div>
+          <div class="visual-badge green">✓ Seguro</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <a href="#" class="footer-logo">Stock<span>.Tech</span></a>
-  <span class="footer-copy">© 2026 Stock.Tech — Todos os direitos reservados</span>
-  <a href="https://stock.karpel.uk" class="footer-link">stock.karpel.uk →</a>
-</footer>
+  <section class="pricing" id="pricing">
+    <div class="section-label reveal">— Planos</div>
+    <h2 class="section-title reveal">Preço justo para<br>cada tamanho de negócio</h2>
+    <p class="section-desc reveal" style="margin:0 auto 4rem">Assine agora. Escale quando precisar. Sem surpresas na
+      fatura.</p>
+    <div class="pricing-grid">
+      <div class="plan reveal">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">R$80<span>/mês</span></div>
+        <div class="plan-period">Para começar</div>
+        <div class="plan-features">
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Até 50 produtos</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>1 usuário</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Alertas básicos</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Relatórios simples</div>
+        </div>
+        <a href="pages/login/login.html" class="plan-btn plan-btn-outline">Assinar Basic</a>
+      </div>
+      <div class="plan featured reveal reveal-delay-1">
+        <div class="plan-badge">Mais popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">R$150<span>/mês</span></div>
+        <div class="plan-period">Para negócios em crescimento</div>
+        <div class="plan-features">
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Produtos ilimitados</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Até 5 usuários</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Alertas inteligentes</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Relatórios avançados</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Gestão de fornecedores</div>
+          <div class="plan-feature"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>Previsão de demanda</div>
+        </div>
+        <a href="pages/login/login.html" class="plan-btn plan-btn-filled">Assinar Pro</a>
+      </div>
+    </div>
+  </section>
 
-<script>
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
-</script>
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Pronto para transformar seu estoque?</h2>
+      <p>Junte-se a milhares de empreendedores que já controlam seu estoque com inteligência. Comece hoje mesmo.</p>
+      <a href="pages/login/login.html" class="btn-cta">Criar conta</a>
+      <div class="cta-note">Sem cartão de crédito. Cancele quando quiser.</div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="#" class="footer-logo"
+      style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">
+      <img src="assets/logo.png" alt="Stock.Tech" style="height: 48px;">
+      Stock<span>.Tech</span>
+    </a>
+    <span class="footer-copy">© 2026 Stock.Tech — Todos os direitos reservados</span>
+    <a href="https://stock.karpel.uk" class="footer-link">stock.karpel.uk →</a>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  </script>
 
 </body>
+
 </html>
